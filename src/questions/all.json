@@ -1,0 +1,222 @@
+[
+  {
+    "question": "Wie heißt die Hauptfigur der Serie?",
+    "options": {
+      "A": "Ava",
+      "B": "Sophia",
+      "C": "Isabel",
+      "D": "Layla"
+    },
+    "correctAnswerKey": "B"
+  },
+  {
+    "question": "Wie heißt Sophias Einhorn?",
+    "options": {
+      "A": "Leaf",
+      "B": "Wildstar",
+      "C": "River",
+      "D": "Glacier"
+    },
+    "correctAnswerKey": "B"
+  },
+  {
+    "question": "Welche magische Kraft besitzt Wildstar?",
+    "options": {
+      "A": "Wasser-Magie",
+      "B": "Licht-Magie",
+      "C": "Pflanzen-Magie",
+      "D": "Eis-Magie"
+    },
+    "correctAnswerKey": "B"
+  },
+  {
+    "question": "Auf welcher Insel befindet sich die Akademie?",
+    "options": {
+      "A": "Sterneninsel",
+      "B": "Insel Berry",
+      "C": "Kristallinsel",
+      "D": "Regenbogeninsel"
+    },
+    "correctAnswerKey": "B"
+  },
+  {
+    "question": "Was passiert bei der magischen Bindung?",
+    "options": {
+      "A": "Das Einhorn bekommt Flügel",
+      "B": "Das Mal leuchtet und Magie wird frei",
+      "C": "Der Reiter spricht mit Tieren",
+      "D": "Die Akademie verschwindet"
+    },
+    "correctAnswerKey": "B"
+  },
+  {
+    "question": "Wer ist die Rektorin der Akademie?",
+    "options": {
+      "A": "Frau Primrose",
+      "B": "Frau Efeu",
+      "C": "Frau Stern",
+      "D": "Frau Beere"
+    },
+    "correctAnswerKey": "A"
+  },
+  {
+    "question": "Wie heißt Avas Einhorn?",
+    "options": {
+      "A": "Blossom",
+      "B": "Leaf",
+      "C": "Fern",
+      "D": "Willow"
+    },
+    "correctAnswerKey": "B"
+  },
+  {
+    "question": "Was ist Isabels größte Leidenschaft?",
+    "options": {
+      "A": "Kochen",
+      "B": "Sport und Wettbewerb",
+      "C": "Lesen",
+      "D": "Malen"
+    },
+    "correctAnswerKey": "B"
+  },
+  {
+    "question": "Welches Element kontrolliert Valentina?",
+    "options": {
+      "A": "Erde",
+      "B": "Feuer",
+      "C": "Luft",
+      "D": "Metall"
+    },
+    "correctAnswerKey": "B"
+  },
+  {
+    "question": "Wie heißt der dunkle See?",
+    "options": {
+      "A": "Schattensee",
+      "B": "Grim-See",
+      "C": "Schwarzsee",
+      "D": "Nachtsee"
+    },
+    "correctAnswerKey": "B"
+  },
+  {
+    "question": "Wer war Sophias Vater an der Akademie?",
+    "options": {
+      "A": "Ein Koch",
+      "B": "Ein berühmter Reiter",
+      "C": "Ein Lehrer",
+      "D": "Ein Gärtner"
+    },
+    "correctAnswerKey": "B"
+  },
+  {
+    "question": "Welche Farbe hat Wildstars Fell?",
+    "options": {
+      "A": "Reinweiß",
+      "B": "Weiß mit goldenen Sternen",
+      "C": "Silbergrau",
+      "D": "Schwarz"
+    },
+    "correctAnswerKey": "B"
+  },
+  {
+    "question": "Wer ist besonders modebewusst?",
+    "options": {
+      "A": "Layla",
+      "B": "Ava",
+      "C": "Valentina",
+      "D": "Isabel"
+    },
+    "correctAnswerKey": "C"
+  },
+  {
+    "question": "Was macht Grim mit Einhörnern?",
+    "options": {
+      "A": "Sie werden unsichtbar",
+      "B": "Sie verlieren Magie und werden krank",
+      "C": "Sie werden riesig",
+      "D": "Sie werden zu Pferden"
+    },
+    "correctAnswerKey": "B"
+  },
+  {
+    "question": "Welches Einhorn gehört zu Layla?",
+    "options": {
+      "A": "Storm",
+      "B": "Glacier",
+      "C": "Sunbeam",
+      "D": "Cloud"
+    },
+    "correctAnswerKey": "B"
+  },
+  {
+    "question": "Wie reisen die Schüler zur Insel?",
+    "options": {
+      "A": "Mit dem Flugzeug",
+      "B": "Mit einem magischen Bus",
+      "C": "Mit dem Schiff",
+      "D": "Auf Pferden"
+    },
+    "correctAnswerKey": "B"
+  },
+  {
+    "question": "In welchem Wohnheim wohnt Sophia?",
+    "options": {
+      "A": "Saphir-Saal",
+      "B": "Bernstein-Wohnheim",
+      "C": "Smaragd-Turm",
+      "D": "Rubin-Trakt"
+    },
+    "correctAnswerKey": "B"
+  },
+  {
+    "question": "Was ist die Aufgabe der Reiter?",
+    "options": {
+      "A": "Rennen gewinnen",
+      "B": "Die Insel vor Grim schützen",
+      "C": "Einhörner verkaufen",
+      "D": "Zaubertränke brauen"
+    },
+    "correctAnswerKey": "B"
+  },
+  {
+    "question": "Wie heißt das Einhorn von Isabel?",
+    "options": {
+      "A": "River",
+      "B": "Lake",
+      "C": "Ocean",
+      "D": "Brook"
+    },
+    "correctAnswerKey": "A"
+  },
+  {
+    "question": "Welche Farbe hat Wildstars Magie?",
+    "options": {
+      "A": "Blau",
+      "B": "Gelb/Gold",
+      "C": "Grün",
+      "D": "Violett"
+    },
+    "correctAnswerKey": "B"
+  },
+  {
+    "question": "Wer ist Sophias erste Rivalin?",
+    "options": {
+      "A": "Ava",
+      "B": "Valentina",
+      "C": "Layla",
+      "D": "Isabel"
+    },
+    "correctAnswerKey": "B"
+  },
+  {
+    "question": "Was ist das Schicksalsrad?",
+    "options": {
+      "A": "Ein Glücksspiel",
+      "B": "Ort der Einhorn-Zuweisung",
+      "C": "Trainingsgerät",
+      "D": "Geheimes Portal"
+    },
+    "correctAnswerKey": "B"
+  }
+]
