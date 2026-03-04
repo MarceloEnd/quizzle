@@ -3,7 +3,7 @@ import {Typography, Button, Grid, Card, CardContent, Zoom } from '@mui/material'
 import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
 import HighlightOffIcon from '@mui/icons-material/HighlightOff';
 
-const QuestionCard = ({ data, onNext }) => {
+export const QuizArea = ({ data, onNext }) => {
   const [selectedAnswer, setSelectedAnswer] = useState(null);
   const [isCorrect, setIsCorrect] = useState(null);
 
@@ -94,5 +94,3 @@ const QuestionCard = ({ data, onNext }) => {
     </Zoom>
   );
 };
-
-export default QuestionCard;

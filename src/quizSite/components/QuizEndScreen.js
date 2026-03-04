@@ -3,7 +3,7 @@ import { Box, Typography, Button, Paper, Divider, Stack } from '@mui/material';
 import TrophyIcon from '@mui/icons-material/EmojiEvents';
 import ReplayIcon from '@mui/icons-material/Replay';
 
-const QuizResult = ({ score, total, onRestart }) => {
+export const QuizResult = ({ score, total, onRestart }) => {
   const percentage = Math.round((score / total) * 100);
   
   // Custom feedback based on performance
@@ -86,5 +86,3 @@ const QuizResult = ({ score, total, onRestart }) => {
     </Box>
   );
 };
-
-export default QuizResult;
