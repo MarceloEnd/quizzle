@@ -1,5 +1,5 @@
 import { StandardHeader } from "../components/StandardHeader";
-import { Link } from 'react-router-dom'; // 1. Import Link
+import { Link } from 'react-router-dom';
 import { 
   Typography, 
   Button, 
@@ -12,33 +12,23 @@ import {
 } from '@mui/material';
 import { 
   Psychology as QuizIcon, 
-  ArrowForwardIos as ArrowIcon 
+  ArrowForwardIos as ArrowIcon, 
 } from '@mui/icons-material';
+import { categories } from "./functions/helper";
 
 
 
-export const QuizOverviewSite = () => {
-  const activities = [
-    {
-      title: "Ponys und Pferde",
-      description: "Teste dein Pferde Wissen?",
-      path: "/quiz/1"
-    },
-    {
-      title: "Farben",
-      description: "Kennst du den Farbkreis?",
-      path: "/quiz/2"
-    }
-  ];
+export const JokeOverviewSite = () => {
+  const themes = categories()
 
   return (
-    <div className="Start">
+    <div className="Jokes Overview">
       <StandardHeader />
       <Paper elevation={4} sx={{ p: 6, textAlign: 'center', bgcolor: 'white' }}>
-        <Typography variant="h2" color="primary" gutterBottom>🌟 Willkommen! 🌟</Typography>
+        <Typography variant="h2" color="primary" gutterBottom>Witze vom feinsten</Typography>
 
         <List sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
-        {activities.map((item, index) => (
+        {themes.map((item, index) => (
           <Paper 
             key={index} 
             elevation={3} 
@@ -55,13 +45,12 @@ export const QuizOverviewSite = () => {
                 <QuizIcon sx={{ fontSize: 40, color: '#FF9800' }} />
               </ListItemIcon>
               <ListItemText 
-                primary={<Typography variant="h6" sx={{ fontWeight: 'bold' }}>{item.title}</Typography>}
-                secondary={item.description}
+                primary={<Typography variant="h6" sx={{ fontWeight: 'bold' }}>{item}</Typography>}
               />
               <Button 
                 variant="contained" 
                 component={Link} 
-                to={item.path}
+                to={"/witz/"+index}
                 sx={{ 
                   borderRadius: '12px', 
                   backgroundColor: '#FF9800',

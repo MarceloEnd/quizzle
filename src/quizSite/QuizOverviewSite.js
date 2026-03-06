@@ -12,29 +12,22 @@ import {
 } from '@mui/material';
 import { 
   Psychology as QuizIcon, 
-  EmojiEmotions as JokeIcon, 
   ArrowForwardIos as ArrowIcon 
 } from '@mui/icons-material';
 
 
 
-export const StartSite = () => {
+export const QuizOverviewSite = () => {
   const activities = [
     {
-      title: "Quiz",
-      description: "Teste dein Wissen?",
-      icon: <QuizIcon sx={{ fontSize: 40, color: '#FF9800' }} />,
-      color: '#FFF3E0',
-      btnColor: '#FF9800',
-      path: "/quizliste"
+      title: "Ponys und Pferde",
+      description: "Teste dein Pferde Wissen?",
+      path: "/quiz/1"
     },
     {
-      title: "Witze",
-      description: "Klopf Klopf! Wer ist da?",
-      icon: <JokeIcon sx={{ fontSize: 40, color: '#E91E63' }} />,
-      color: '#FCE4EC',
-      btnColor: '#E91E63',
-      path: "/witzliste"
+      title: "Farben",
+      description: "Kennst du den Farbkreis?",
+      path: "/quiz/2"
     }
   ];
 
@@ -42,7 +35,7 @@ export const StartSite = () => {
     <div className="Start">
       <StandardHeader />
       <Paper elevation={4} sx={{ p: 6, textAlign: 'center', bgcolor: 'white' }}>
-        <Typography variant="h2" color="primary" gutterBottom>🌟 Willkommen! 🌟</Typography>
+        <Typography variant="h2" color="primary" gutterBottom>Teste dein Quiz Wissen</Typography>
 
         <List sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
         {activities.map((item, index) => (
@@ -59,7 +52,7 @@ export const StartSite = () => {
           >
             <ListItem sx={{ p: 3 }}>
               <ListItemIcon>
-                {item.icon}
+                <QuizIcon sx={{ fontSize: 40, color: '#FF9800' }} />
               </ListItemIcon>
               <ListItemText 
                 primary={<Typography variant="h6" sx={{ fontWeight: 'bold' }}>{item.title}</Typography>}
@@ -71,8 +64,8 @@ export const StartSite = () => {
                 to={item.path}
                 sx={{ 
                   borderRadius: '12px', 
-                  backgroundColor: item.btnColor,
-                  '&:hover': { backgroundColor: item.btnColor, filter: 'brightness(0.9)' }
+                  backgroundColor: '#FF9800',
+                  '&:hover': { backgroundColor: '#FFF3E0', filter: 'brightness(0.9)' }
                 }}
                 endIcon={<ArrowIcon />}
               >
