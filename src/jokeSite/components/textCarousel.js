@@ -16,19 +16,20 @@ export const TextCarousel = ({ messages }) => {
   };
 
   return (
-    <Box sx={{ maxWidth: 600, flexGrow: 1, margin: 'auto' }}>
+    <Box sx={{ maxWidth: 500, flexGrow: 1, margin: 'auto', px: { xs: 2, sm: 0 } }}>
         <Paper
             elevation={0}
             sx={{
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                minHeight: 200, // Minimum height to prevent "jumping"
                 p: 4,           // More padding for breathing room
                 borderRadius: 4,
                 bgcolor: 'action.hover', // Softer background than stark white
                 border: '1px solid',
-                borderColor: 'divider'
+                minHeight: { xs: 250, sm: 200 },
+                borderColor: 'divider',
+                overflow: 'hidden',
             }}
             >
             <Typography 

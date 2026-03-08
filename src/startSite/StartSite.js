@@ -41,7 +41,7 @@ export const StartSite = () => {
   return (
     <div className="Start">
       <StandardHeader />
-      <Paper elevation={4} sx={{ p: 6, textAlign: 'center', bgcolor: 'white' }}>
+      <Paper elevation={0} sx={{ p: { xs: 3, md: 6 }, textAlign: 'center', bgcolor: 'transparent' }}>
         <Typography variant="h2" color="primary" gutterBottom>🌟 Willkommen! 🌟</Typography>
 
         <List sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>

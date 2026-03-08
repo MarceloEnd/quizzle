@@ -2,7 +2,7 @@ import jokes from '../jokes/jokes.json';
 
 export const categories = () => {
     const uniqueThemen = [...new Set(jokes.map(item => item.Themenbereich))];
-    return uniqueThemen;
+    return uniqueThemen.sort((a, b) => a.localeCompare(b));
 }
 
 

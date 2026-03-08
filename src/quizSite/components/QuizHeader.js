@@ -49,7 +49,7 @@ export const QuizHeader = ({ currentQuestion, totalQuestions }) => {
 
           {/* Question Counter */}
           <Typography variant="body2" color="text.secondary">
-            Frage <b>{currentQuestion}</b> of {totalQuestions}
+            Frage <b>{currentQuestion + 1}</b> of {totalQuestions}
           </Typography>
         </Toolbar>
 

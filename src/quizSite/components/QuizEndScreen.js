@@ -2,6 +2,8 @@ import React from 'react';
 import { Box, Typography, Button, Paper, Divider, Stack } from '@mui/material';
 import TrophyIcon from '@mui/icons-material/EmojiEvents';
 import ReplayIcon from '@mui/icons-material/Replay';
+import { ArrowBack } from '@mui/icons-material';
+import { Link } from 'react-router-dom';
 
 export const QuizResult = ({ score, total, onRestart }) => {
   const percentage = Math.round((score / total) * 100);
@@ -28,10 +30,10 @@ export const QuizResult = ({ score, total, onRestart }) => {
         maxWidth: 500,
         width: '100%',
         textAlign: 'center',
-        bgcolor: '#000814',
+        bgcolor: 'white',
         border: `4px solid ${status.color}`,
         borderRadius: 10,
-        color: 'white',
+        color: '#3b82f6',
         position: 'relative',
         overflow: 'hidden'
       }}>
@@ -53,7 +55,7 @@ export const QuizResult = ({ score, total, onRestart }) => {
             {status.label}
           </Typography>
           
-          <Typography variant="h5" sx={{ color: '#ffd700', mb: 4 }}>
+          <Typography variant="h5" sx={{ color: '#98950478', mb: 4 }}>
              Gesamt: {score} von {total} Punkten
           </Typography>
 
@@ -63,7 +65,7 @@ export const QuizResult = ({ score, total, onRestart }) => {
             "{status.msg}"
           </Typography>
 
-          <Stack direction="row" spacing={2} justifyContent="center">
+          <Stack direction="column" spacing={2} justifyContent="center">
             <Button 
               variant="contained" 
               size="large"
@@ -71,7 +73,7 @@ export const QuizResult = ({ score, total, onRestart }) => {
               onClick={onRestart}
               sx={{ 
                 bgcolor: status.color, 
-                color: '#000',
+                color: 'white',
                 fontWeight: 'bold',
                 px: 4,
                 borderRadius: '50px',
@@ -79,6 +81,24 @@ export const QuizResult = ({ score, total, onRestart }) => {
               }}
             >
               Nochmal spielen
+            </Button>
+            <Button 
+              variant="contained" 
+              component={Link}
+              to="/"
+              size="large"
+              startIcon={<ArrowBack />}
+              onClick={onRestart}
+              sx={{ 
+                bgcolor: status.color, 
+                color: 'white',
+                fontWeight: 'bold',
+                px: 4,
+                borderRadius: '50px',
+                '&:hover': { bgcolor: '#fff' }
+              }}
+            >
+              Mehr
             </Button>
           </Stack>
         </Box>
