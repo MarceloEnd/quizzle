@@ -15,6 +15,7 @@ import {
   EmojiEmotions as JokeIcon, 
   ArrowForwardIos as ArrowIcon 
 } from '@mui/icons-material';
+import VideogameAssetIcon from '@mui/icons-material/VideogameAsset';
 
 
 
@@ -35,6 +36,14 @@ export const StartSite = () => {
       color: '#FCE4EC',
       btnColor: '#E91E63',
       path: "/witzliste"
+    },
+    {
+      title: "Spiele",
+      description: "Teste deinen Geist?",
+      icon: <VideogameAssetIcon sx={{ fontSize: 40, color: '#219538ff' }} />,
+      color: '#e3fae8ff',
+      btnColor: '#219538ff',
+      path: "/spieleliste"
     }
   ];
 

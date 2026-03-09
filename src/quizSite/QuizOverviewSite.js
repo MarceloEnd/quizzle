@@ -45,7 +45,7 @@ export const QuizOverviewSite = () => {
             sx={{ 
               borderRadius: '20px', 
               overflow: 'hidden',
-              backgroundColor: item.color,
+              backgroundColor: '#FFF3E0',
               transition: 'transform 0.2s',
               '&:hover': { transform: 'scale(1.02)' }
             }}

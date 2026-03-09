@@ -35,14 +35,14 @@ export const JokeOverviewSite = () => {
             sx={{ 
               borderRadius: '20px', 
               overflow: 'hidden',
-              backgroundColor: item.color,
+              backgroundColor: '#FCE4EC',
               transition: 'transform 0.2s',
               '&:hover': { transform: 'scale(1.02)' }
             }}
           >
             <ListItem sx={{ p: 3 }}>
               <ListItemIcon>
-                <QuizIcon sx={{ fontSize: 40, color: '#FF9800' }} />
+                <QuizIcon sx={{ fontSize: 40, color: '#E91E63' }} />
               </ListItemIcon>
               <ListItemText 
                 primary={<Typography variant="h6" sx={{ fontWeight: 'bold' }}>{item}</Typography>}
@@ -53,7 +53,7 @@ export const JokeOverviewSite = () => {
                 to={"/witz/"+index}
                 sx={{ 
                   borderRadius: '12px', 
-                  backgroundColor: '#FF9800',
+                  backgroundColor: '#E91E63',
                   '&:hover': { backgroundColor: '#FFF3E0', filter: 'brightness(0.9)' }
                 }}
                 endIcon={<ArrowIcon />}

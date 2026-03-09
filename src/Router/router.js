@@ -6,6 +6,8 @@ import { QuizSite } from '../quizSite/QuizSite';
 import { QuizOverviewSite } from '../quizSite/QuizOverviewSite';
 import { JokeOverviewSite } from '../jokeSite/JokeOverviewSite';
 import { JokeSite } from '../jokeSite/JokeSite';
+import { GameOverviewSite } from '../gameSite/GameOverviewSite';
+import { MiniSudokuSite } from '../gameSite/miniSudoku/MiniSudokuSite';
 
 const router = createBrowserRouter([
   {
@@ -16,6 +18,8 @@ const router = createBrowserRouter([
       { path: "quiz/:id", element: <QuizSite /> },
       { path: "witzliste", element: <JokeOverviewSite /> },
       { path: "witz/:id", element: <JokeSite /> },
+      { path: "spieleliste", element: <GameOverviewSite /> },
+      { path: "spiele/minisudoku", element: <MiniSudokuSite /> },
     ],
   },
 ]);
