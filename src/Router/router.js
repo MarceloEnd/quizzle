@@ -7,7 +7,9 @@ import { QuizOverviewSite } from '../quizSite/QuizOverviewSite';
 import { JokeOverviewSite } from '../jokeSite/JokeOverviewSite';
 import { JokeSite } from '../jokeSite/JokeSite';
 import { GameOverviewSite } from '../gameSite/GameOverviewSite';
-import { MiniSudokuSite } from '../gameSite/miniSudoku/MiniSudokuSite';
+import { Sudoku6x6Site } from '../gameSite/sudoku6x6/Sudoku6x6Site';
+import { Sudoku4x4Site } from '../gameSite/sudoku4x4/Sudoku4x4Site';
+import { MemorySite } from '../gameSite/memory/MemorySite';
 
 const router = createBrowserRouter([
   {
@@ -19,7 +21,9 @@ const router = createBrowserRouter([
       { path: "witzliste", element: <JokeOverviewSite /> },
       { path: "witz/:id", element: <JokeSite /> },
       { path: "spieleliste", element: <GameOverviewSite /> },
-      { path: "spiele/minisudoku", element: <MiniSudokuSite /> },
+      { path: "spiele/sudoku6x6", element: <Sudoku6x6Site /> },
+      { path: "spiele/sudoku4x4", element: <Sudoku4x4Site /> },
+      { path: "spiele/memory", element: <MemorySite /> },
     ],
   },
 ]);

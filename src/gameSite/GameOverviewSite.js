@@ -16,9 +16,11 @@ import VideogameAssetIcon from '@mui/icons-material/VideogameAsset';
 
 // 1. Define the game data outside the component
 const GAMES = [
-  { id: 1, title: "Mini Sudoku (Leicht)", path: "/spiele/minisudoku?leicht" },
-  { id: 2, title: "Mini Sudoku ", path: "/spiele/minisudoku" }, 
-  { id: 2, title: "Mini Sudoku (Schwer)", path: "/spiele/minisudoku?schwer" }, 
+  { id: 1, title: "Memory", path: "/spiele/memory" }, 
+  { id: 2, title: "Sudoku 4x4", path: "/spiele/sudoku4x4" }, 
+  { id: 3, title: "Sudoku 6x6(Leicht)", path: "/spiele/sudoku6x6?leicht" },
+  { id: 4, title: "Sudoku 6x6", path: "/spiele/sudoku6x6" }, 
+  { id: 5, title: "Sudoku 6x6(Schwer)", path: "/spiele/sudoku6x6?schwer" }, 
 ];
 
 export const GameOverviewSite = () => {

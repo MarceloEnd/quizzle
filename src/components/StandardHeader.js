@@ -1,54 +1,68 @@
 import React from 'react';
-import { AppBar, Toolbar, Typography, Box, IconButton } from '@mui/material';
+import { AppBar, Toolbar, Typography, Box, Container } from '@mui/material';
 import { Link } from 'react-router-dom';
-import logo from '../images/logo.jpeg'
+import logo from '../images/logo.jpeg';
 
 export const StandardHeader = () => {
-
   return (
-    <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static" color="default" elevation={1}>
-        <Toolbar sx={{backgroundColor:"lightblue"}}>
-          {/* Logo or App Name */}
-          <IconButton
+    <AppBar 
+      position="sticky" 
+      elevation={0} 
+      sx={{ 
+        // A very light, creamy blue-grey gradient for a premium feel
+        background: 'linear-gradient(90deg, #F0F4F8 0%, #FFFFFF 100%)', 
+        borderBottom: '1px solid rgba(0, 0, 0, 0.05)',
+        py: 0.5
+      }}
+    >
+      <Container maxWidth="lg">
+        <Toolbar disableGutters>
+          {/* Logo Section */}
+          <Box
             component={Link}
             to="/"
-            edge="start"
-            color="inherit"
-            aria-label="home"
-            sx={{ mr: 2, color: '#FF6B6B' }} // Made it a bright color to match the theme
+            sx={{ 
+              display: 'flex', 
+              alignItems: 'center', 
+              textDecoration: 'none',
+              transition: 'transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275)',
+              '&:hover': { transform: 'scale(1.05)' }
+            }}
           >
             <Box
               component="img"
               src={logo}
               alt="Logo"
               sx={{ 
-                width: 100, 
-                height: 100, 
-                borderRadius: '20px', // Bonus: rounded corners for kids!
-                objectFit: 'contain' 
+                width: 55, 
+                height: 55, 
+                borderRadius: '14px', 
+                boxShadow: '0 8px 20px -6px rgba(0,0,0,0.15)',
+                objectFit: 'cover',
+                mr: 2,
+                border: '2px solid #FFF'
               }}
             />
-          </IconButton>
+            
+            <Typography 
+              variant="h5" 
+              sx={{ 
+                fontWeight: 900,
+                fontFamily: '"Outfit", sans-serif', 
+                letterSpacing: '-0.5px',
+                // Professional Slate Blue instead of pure black
+                color: '#2D3436', 
+                display: { xs: 'none', sm: 'block' }
+              }}
+            >
+              Quiz for Kids
+            </Typography>
+          </Box>
 
-          <Typography variant="h6" component="div" sx={{ 
-            flexGrow: 1, 
-            fontWeight: 800,
-            color: '#FFD700', // Bright Golden Yellow
-            fontFamily: '"Comic Sans MS", "Chalkboard SE", "cursive"', // Kid-friendly fonts
-            letterSpacing: '1px',
-            background: 'linear-gradient(45deg, #FF6B6B 30%, #FFD93D 90%)',
-            WebkitBackgroundClip: 'text',
-            WebkitTextFillColor: 'transparent',
-            filter: 'drop-shadow(2px 2px 0px #FFF)',
-            display: 'inline-block'
-          }}>
-            {"Quiz for Kids"}
-          </Typography>
+          <Box sx={{ flexGrow: 1 }} />
 
         </Toolbar>
-
-      </AppBar>
-    </Box>
+      </Container>
+    </AppBar>
   );
 };
