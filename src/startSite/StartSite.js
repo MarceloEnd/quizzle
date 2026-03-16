@@ -51,7 +51,6 @@ export const StartSite = () => {
     <div className="Start">
       <StandardHeader />
       <Paper elevation={0} sx={{ p: { xs: 3, md: 6 }, textAlign: 'center', bgcolor: 'transparent' }}>
-        <Typography variant="h2" color="primary" gutterBottom>🌟 Willkommen! 🌟</Typography>
 
         <List sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
         {activities.map((item, index) => (
