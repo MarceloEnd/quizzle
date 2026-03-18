@@ -10,6 +10,7 @@ import { GameOverviewSite } from '../gameSite/GameOverviewSite';
 import { Sudoku6x6Site } from '../gameSite/sudoku6x6/Sudoku6x6Site';
 import { Sudoku4x4Site } from '../gameSite/sudoku4x4/Sudoku4x4Site';
 import { MemorySite } from '../gameSite/memory/MemorySite';
+import { MathSquareSite } from '../gameSite/mathSquare/MathSquareSite';
 
 const router = createBrowserRouter([
   {
@@ -20,10 +21,11 @@ const router = createBrowserRouter([
       { path: "quiz/:id", element: <QuizSite /> },
       { path: "witzliste", element: <JokeOverviewSite /> },
       { path: "witz/:id", element: <JokeSite /> },
-      { path: "spieleliste", element: <GameOverviewSite /> },
+      { path: "spiele", element: <GameOverviewSite /> },
       { path: "spiele/sudoku6x6", element: <Sudoku6x6Site /> },
       { path: "spiele/sudoku4x4", element: <Sudoku4x4Site /> },
       { path: "spiele/memory", element: <MemorySite /> },
+      { path: "spiele/rechnequadrat", element: <MathSquareSite /> },
     ],
   },
 ]);

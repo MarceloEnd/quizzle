@@ -43,7 +43,7 @@ export const StartSite = () => {
       icon: <VideogameAssetIcon sx={{ fontSize: 40, color: '#219538ff' }} />,
       color: '#e3fae8ff',
       btnColor: '#219538ff',
-      path: "/spieleliste"
+      path: "/spiele"
     }
   ];
 

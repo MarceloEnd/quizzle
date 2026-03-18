@@ -110,7 +110,7 @@ export const MemorySite = () => {
         {/* 5x5 Grid Layout */}
         <Box sx={{ 
             display: 'grid', 
-            gridTemplateColumns: 'repeat(5, 1fr)', 
+            gridTemplateColumns: 'repeat(4, 1fr)', 
             gap: 1.5, 
             maxWidth: 500, 
             margin: '0 auto' 

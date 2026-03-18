@@ -21,6 +21,9 @@ const GAMES = [
   { id: 3, title: "Sudoku 6x6(Leicht)", path: "/spiele/sudoku6x6?leicht" },
   { id: 4, title: "Sudoku 6x6", path: "/spiele/sudoku6x6" }, 
   { id: 5, title: "Sudoku 6x6(Schwer)", path: "/spiele/sudoku6x6?schwer" }, 
+  { id: 6, title: "Rechne Quadrat(Leicht)", path: "/spiele/rechnequadrat?leicht" }, 
+  { id: 7, title: "Rechne Quadrat", path: "/spiele/rechnequadrat" }, 
+  { id: 8, title: "Rechne Quadrat(Schwer)", path: "/spiele/rechnequadrat?schwer" }, 
 ];
 
 export const GameOverviewSite = () => {
