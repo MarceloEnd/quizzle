@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { Box, TextField, Paper, Typography, Button, Container, Dialog, DialogTitle, DialogContent, DialogActions } from '@mui/material';
+import React, { useState, useEffect, useCallback } from 'react';
+import { Box, TextField, Paper, Typography, Button, Container, Dialog, DialogTitle, DialogActions } from '@mui/material';
 import { generatePuzzle } from './functions/functions';
 import { useSearchParams } from 'react-router-dom';
 import { StandardHeader } from '../../components/StandardHeader';
@@ -14,7 +14,7 @@ export const MathSquareSite = () => {
     const [status, setStatus] = useState({});
     const [showSuccess, setShowSuccess] = useState(false);
 
-    const startNewGame = () => {
+    const startNewGame = useCallback(() => {
         const data = generatePuzzle(isEasy,isHard); 
         setGameData(data);
         
@@ -24,11 +24,11 @@ export const MathSquareSite = () => {
         setInputs(initialInputs);
         setStatus({});
         setShowSuccess(false);
-    };
+    }, [isEasy,isHard]);
 
     useEffect(() => {
         startNewGame();
-    }, []);
+    }, [startNewGame]);
 
     const checkSolution = () => {
         if (!gameData) return;
