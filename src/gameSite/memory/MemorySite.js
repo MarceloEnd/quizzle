@@ -1,26 +1,33 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { 
-  Box, Container, Typography, Button, Paper, 
-  Card, CardActionArea, Slider, Stack, Dialog, DialogTitle, DialogContent, DialogActions 
+  Box, Container, Typography, Button, 
+  Card, CardActionArea, Dialog, DialogTitle, DialogContent, DialogActions 
 } from '@mui/material';
-import ReplayIcon from '@mui/icons-material/Replay';
 import EmojiEventsIcon from '@mui/icons-material/EmojiEvents';
 import { StandardHeader } from '../../components/StandardHeader';
+import { useSearchParams } from 'react-router-dom';
 
-// Expanded symbol list for up to 12 pairs
-const SYMBOLS = ['🍎', '🍌', '🍇', '🍒', '🍓', '🥝', '🍍', '🥥', '🥑', '🥦', '🌽', '🥕'];
+const SYMBOLS = [
+  '🍎', '🍌', '🍇', '🍒', '🍓', ' kiwi', '🍍', '🥥', 
+  '🥑', '🥦', '🌽', '🥕', '🍑', '🍋', '🍉', '🍄' 
+];
 
 export const MemorySite = () => {
-  // User can now set pairs from 5 to 12
-  const [pairCount, setPairCount] = useState(8); 
   const [cards, setCards] = useState([]);
   const [flipped, setFlipped] = useState([]);
   const [matched, setMatched] = useState([]);
   const [moves, setMoves] = useState(0);
   const [gameWon, setGameWon] = useState(false);
   const [disabled, setDisabled] = useState(false);
+  const [searchParams] = useSearchParams();
+  const isHard = searchParams.has('schwer');
+  const isEasy = searchParams.has('leicht');
 
   const initGame = useCallback(() => {
+    let pairCount = 10;
+    if(isEasy) pairCount = 8;
+    else if(isHard) pairCount = 12;
+
     const activeSymbols = SYMBOLS.slice(0, pairCount);
     const gameSet = [...activeSymbols, ...activeSymbols]
       .sort(() => Math.random() - 0.5)
@@ -32,7 +39,7 @@ export const MemorySite = () => {
     setMoves(0);
     setGameWon(false);
     setDisabled(false);
-  }, [pairCount]);
+  }, [isHard, isEasy]);
 
   useEffect(() => {
     initGame();
@@ -69,101 +76,73 @@ export const MemorySite = () => {
 
   return (
     <>
-        <StandardHeader previousPath="/spiele"/>
-        <Container maxWidth="sm" sx={{ mt: 4, textAlign: 'center', pb: 10 }}>
-        <Typography variant="h3" fontWeight="900" gutterBottom color="primary" sx={{ letterSpacing: -1 }}>
+      <StandardHeader previousPath="/spiele"/>
+      {/* Changed maxWidth to md to allow 6 cards to breathe on desktop */}
+      <Container maxWidth="md" sx={{ mt: 4, textAlign: 'center', pb: 10 }}>
+        <Typography variant="h3" fontWeight="900" gutterBottom color="primary" sx={{ letterSpacing: -1, fontSize: { xs: '2.5rem', sm: '3.5rem' } }}>
             MEMORY
         </Typography>
 
-        <Paper elevation={4} sx={{ p: 4, mb: 4, borderRadius: 4, bgcolor: '#fdfdfd' }}>
-            <Stack spacing={3} alignItems="center">
-            <Box sx={{ width: '100%' }}>
-                <Typography variant="h6" gutterBottom fontWeight="800">
-                Pairs: {pairCount}
-                </Typography>
-                <Slider
-                value={pairCount}
-                min={5}
-                max={12} // Max 12 pairs (24 cards) to fit 5x5
-                step={1}
-                marks
-                onChange={(e, val) => setPairCount(val)}
-                sx={{ height: 8 }}
-                />
-            </Box>
-            
-            <Stack direction="row" spacing={3} alignItems="center">
-                <Typography variant="h5" fontWeight="bold">Moves: {moves}</Typography>
-                <Button 
-                startIcon={<ReplayIcon />} 
-                variant="contained" 
-                size="large" // Bigger button
-                onClick={initGame}
-                sx={{ px: 4, py: 1.5, borderRadius: 3, fontWeight: 'bold', fontSize: '1.1rem' }}
-                >
-                Reset
-                </Button>
-            </Stack>
-            </Stack>
-        </Paper>
-
-        {/* 5x5 Grid Layout */}
         <Box sx={{ 
             display: 'grid', 
-            gridTemplateColumns: 'repeat(4, 1fr)', 
-            gap: 1.5, 
-            maxWidth: 500, 
-            margin: '0 auto' 
+            // The logic: 4 columns mobile, 6 columns desktop
+            gridTemplateColumns: { 
+                xs: 'repeat(4, 1fr)', 
+                sm: 'repeat(6, 1fr)' 
+            }, 
+            gap: { xs: 1, sm: 2 }, 
+            maxWidth: { xs: 400, sm: 800 }, 
+            margin: '0 auto',
+            px: { xs: 2, sm: 0 }
         }}>
             {cards.map((card, index) => {
-            const isFlipped = flipped.includes(index) || matched.includes(index);
-            const isMatched = matched.includes(index);
+              const isFlipped = flipped.includes(index) || matched.includes(index);
+              const isMatched = matched.includes(index);
 
-            return (
+              return (
                 <Card 
-                key={index}
-                sx={{ 
-                    aspectRatio: '1/1',
-                    transition: 'transform 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
-                    transform: isFlipped ? 'rotateY(0deg)' : 'rotateY(180deg)',
-                    bgcolor: isMatched ? '#c8e6c9' : (isFlipped ? 'white' : '#1976d2'),
-                    boxShadow: isFlipped ? 4 : 2,
-                    borderRadius: 2,
-                }}
+                  key={index}
+                  sx={{ 
+                      aspectRatio: '1/1',
+                      transition: 'transform 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
+                      transform: isFlipped ? 'rotateY(0deg)' : 'rotateY(180deg)',
+                      bgcolor: isMatched ? '#c8e6c9' : (isFlipped ? 'white' : '#1976d2'),
+                      boxShadow: isFlipped ? 4 : 2,
+                      borderRadius: { xs: 1, sm: 2 }, // Smaller radius on small screens
+                  }}
                 >
-                <CardActionArea onClick={() => handleCardClick(index)} sx={{ height: '100%' }}>
+                  <CardActionArea onClick={() => handleCardClick(index)} sx={{ height: '100%' }}>
                     <Typography 
-                    variant="h4" 
-                    sx={{ 
+                      // Shrink emoji size on mobile so it doesn't overflow
+                      sx={{ 
+                        fontSize: { xs: '1.5rem', sm: '2.5rem' },
                         visibility: isFlipped ? 'visible' : 'hidden',
                         transform: isFlipped ? 'none' : 'rotateY(180deg)'
-                    }}
+                      }}
                     >
-                    {card.symbol}
+                      {card.symbol}
                     </Typography>
-                </CardActionArea>
+                  </CardActionArea>
                 </Card>
-            );
+              );
             })}
-            
-        
         </Box>
 
         <Dialog open={gameWon} PaperProps={{ sx: { borderRadius: 5, p: 3, textAlign: 'center' } }}>
             <DialogTitle>
-            <EmojiEventsIcon sx={{ fontSize: 100, color: '#ffc107' }} />
-            <Typography variant="h3" fontWeight="900">WINNER!</Typography>
+              <EmojiEventsIcon sx={{ fontSize: 100, color: '#ffc107' }} />
+              <Typography variant="h4" fontWeight="900">WINNER!</Typography>
             </DialogTitle>
             <DialogContent>
-            <Typography variant="h5">Finished in {moves} moves.</Typography>
+              <Typography variant="h6">Finished in {moves} moves.</Typography>
             </DialogContent>
             <DialogActions>
-            <Button variant="contained" size="large" onClick={initGame} fullWidth sx={{ py: 2, borderRadius: 3, fontWeight: 'bold' }}>
-                New Game
-            </Button>
+              <Button variant="contained" size="large" onClick={initGame} fullWidth sx={{ py: 2, borderRadius: 3, fontWeight: 'bold' }}>
+                  New Game
+              </Button>
             </DialogActions>
         </Dialog>
-        </Container>
-     </>
+      </Container>
+    </>
   );
 };
