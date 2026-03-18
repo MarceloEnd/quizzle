@@ -29,7 +29,7 @@ const GAMES = [
 export const GameOverviewSite = () => {
   return (
     <div className="Games Overview">
-      <StandardHeader />
+      <StandardHeader previousPath="/"/>
       <Paper elevation={4} sx={{ p: 6, textAlign: 'center', bgcolor: 'white' }}>
         <Typography variant="h2" color="primary" gutterBottom>Spiele</Typography>
 

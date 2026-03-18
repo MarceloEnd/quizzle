@@ -103,7 +103,7 @@ export const Sudoku6x6Site = () => {
 
   return (
     <>
-    <StandardHeader />
+    <StandardHeader previousPath="/spiele"/>
     <Container maxWidth="sm" sx={{ mt: 4, textAlign: 'center', pb: 10 }}>
       <Typography variant="h4" fontWeight="bold" gutterBottom>6x6 Sudoku</Typography>
       

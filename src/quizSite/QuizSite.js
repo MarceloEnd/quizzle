@@ -30,6 +30,7 @@ export const QuizSite = () => {
               currentQuestion = {currentIndex}
               score = {score}
               totalQuestions = {10}
+              previousPath="/quizliste"
             />
             { currentIndex < 10 &&
             <QuizArea 

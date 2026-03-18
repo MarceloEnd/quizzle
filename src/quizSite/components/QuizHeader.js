@@ -1,65 +1,103 @@
 import React from 'react';
-import { AppBar, Toolbar, Typography, Box, LinearProgress, IconButton } from '@mui/material';
+import { AppBar, Toolbar, Typography, Box, Container, IconButton, LinearProgress } from '@mui/material';
 import { Link } from 'react-router-dom';
-import logo from '../../images/logo.jpeg'
+import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew'; // Need to install @mui/icons-material
+import logo from '../../images/logo.jpeg';
 
-export const QuizHeader = ({ currentQuestion, totalQuestions }) => {
+export const QuizHeader = ({previousPath,currentQuestion, totalQuestions }) => {
   // Calculate progress percentage
   const progress = (currentQuestion / totalQuestions) * 100;
 
   return (
-    <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static" color="default" elevation={1}>
-        <Toolbar sx={{backgroundColor:"lightblue"}}>
-          {/* Logo or App Name */}
-          <IconButton
-            component={Link}
-            to="/"
-            edge="start"
-            color="inherit"
-            aria-label="home"
-            sx={{ mr: 2, color: '#FF6B6B' }} // Made it a bright color to match the theme
-          >
+    <>
+      <AppBar 
+        position="sticky" 
+        elevation={0} 
+        sx={{ 
+          background: 'linear-gradient(90deg, #F0F4F8 0%, #FFFFFF 100%)', 
+          borderBottom: '1px solid rgba(0, 0, 0, 0.05)',
+          py: 0.5
+        }}
+      >
+        <Container maxWidth="lg">
+          <Toolbar disableGutters sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+            
+            {/* 1. Left Section: Backlink */}
+            <Box sx={{ width: { xs: 40, sm: 100 }, display: 'flex', justifyContent: 'flex-start' }}>
+              <IconButton 
+                component={Link} 
+                to={previousPath}
+                sx={{ 
+                  color: '#2D3436',
+                  transition: 'all 0.2s',
+                  '&:hover': { backgroundColor: 'rgba(0,0,0,0.04)', transform: 'translateX(-3px)' }
+                }}
+              >
+                <ArrowBackIosNewIcon fontSize="small" />
+              </IconButton>
+            </Box>
+
+            {/* 2. Center Section: Logo and Name */}
             <Box
-              component="img"
-              src={logo}
-              alt="Logo"
+              component={Link}
+              to="/"
               sx={{ 
-                width: 100, 
-                height: 100, 
-                borderRadius: '20px', // Bonus: rounded corners for kids!
-                objectFit: 'contain' 
+                display: 'flex', 
+                alignItems: 'center', 
+                textDecoration: 'none',
+                position: 'absolute', 
+                left: '50%',
+                transform: 'translateX(-50%)',
+                transition: 'transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275)',
+                '&:hover': { transform: 'translateX(-50%) scale(1.05)' } 
               }}
-            />
-          </IconButton>
-          <Typography variant="h6" component="div" sx={{ 
-            flexGrow: 1, 
-            fontWeight: 800,
-            color: '#FFD700', // Bright Golden Yellow
-            fontFamily: '"Comic Sans MS", "Chalkboard SE", "cursive"', // Kid-friendly fonts
-            letterSpacing: '1px',
-            background: 'linear-gradient(45deg, #FF6B6B 30%, #FFD93D 90%)',
-            WebkitBackgroundClip: 'text',
-            WebkitTextFillColor: 'transparent',
-            filter: 'drop-shadow(2px 2px 0px #FFF)',
-            display: 'inline-block'
-          }}>
-            {"Quiz for Kids"}
-          </Typography>
+            >
+              <Box
+                component="img"
+                src={logo}
+                alt="Logo"
+                sx={{ 
+                  width: { xs: 40, sm: 55 }, // Smaller on mobile
+                  height: { xs: 40, sm: 55 }, 
+                  borderRadius: '14px', 
+                  boxShadow: '0 8px 20px -6px rgba(0,0,0,0.15)',
+                  objectFit: 'cover',
+                  mr: { xs: 1, sm: 2 },
+                  border: '2px solid #FFF'
+                }}
+              />
+              
+              <Typography 
+                variant="h5" 
+                sx={{ 
+                  fontWeight: 900,
+                  fontFamily: '"Outfit", sans-serif', 
+                  letterSpacing: '-0.5px',
+                  color: '#2D3436', 
+                  fontSize: { xs: '1.1rem', sm: '1.5rem' } // Responsive font size
+                }}
+              >
+                Quiz for Kids
+              </Typography>     
+            </Box>
 
-          {/* Question Counter */}
-          <Typography variant="body2" color="text.secondary">
-            Frage <b>{currentQuestion + 1}</b> of {totalQuestions}
-          </Typography>
-        </Toolbar>
-
-        {/* Progress Bar under the header */}
-        <LinearProgress 
-          variant="determinate" 
-          value={progress} 
-          sx={{ height: 6, borderRadius: 0 }} 
-        />
+            {/* 3. Right Section: Empty spacer to balance the layout */}
+            <Box sx={{ width: { xs: 40, sm: 100 } }} >
+              {/* Question Counter */}
+              <Typography variant="body2" color="text.secondary" >
+                Frage <b>{currentQuestion + 1}</b> of {totalQuestions}
+              </Typography>
+            </Box>
+          </Toolbar>
+        </Container>
+        
       </AppBar>
-    </Box>
+      {/* Progress Bar under the header */}
+      <LinearProgress 
+        variant="determinate" 
+        value={progress} 
+        sx={{ height: 6, borderRadius: 0 }} 
+      />
+    </>
   );
 };

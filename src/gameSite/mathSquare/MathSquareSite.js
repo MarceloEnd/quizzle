@@ -122,7 +122,7 @@ export const MathSquareSite = () => {
 
     return (
         <>
-            <StandardHeader />
+            <StandardHeader previousPath="/spiele"/>
             <Container sx={{ mt: 4, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
                 <Typography variant="h4" sx={{ mb: 4, fontWeight: 'bold', letterSpacing: 1 }}>
                     Rechne Quadrat

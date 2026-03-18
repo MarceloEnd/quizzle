@@ -33,7 +33,7 @@ export const QuizOverviewSite = () => {
 
   return (
     <div className="Start">
-      <StandardHeader />
+      <StandardHeader previousPath="/"/>
       <Paper elevation={4} sx={{ p: 6, textAlign: 'center', bgcolor: 'white' }}>
         <Typography variant="h2" color="primary" gutterBottom>Teste dein Quiz Wissen</Typography>
 

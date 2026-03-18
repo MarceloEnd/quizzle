@@ -112,7 +112,7 @@ export const Sudoku4x4Site = () => {
 
   return (
     <>
-    <StandardHeader />
+    <StandardHeader previousPath="/spiele"/>
     <Container maxWidth="sm" sx={{ mt: 4, textAlign: 'center', pb: 10 }}>
       <Typography variant="h4" fontWeight="bold" gutterBottom>4x4 Sudoku</Typography>
       

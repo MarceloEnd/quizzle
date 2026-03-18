@@ -10,7 +10,7 @@ export const JokeSite = () => {
 
   return (
     <div className="Jokes">
-       <StandardHeader/>
+       <StandardHeader previousPath="/witzliste"/>
        <br/>
        <br/>
        <TextCarousel messages={data} />

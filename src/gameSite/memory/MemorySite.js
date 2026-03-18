@@ -69,7 +69,7 @@ export const MemorySite = () => {
 
   return (
     <>
-        <StandardHeader />
+        <StandardHeader previousPath="/spiele"/>
         <Container maxWidth="sm" sx={{ mt: 4, textAlign: 'center', pb: 10 }}>
         <Typography variant="h3" fontWeight="900" gutterBottom color="primary" sx={{ letterSpacing: -1 }}>
             MEMORY

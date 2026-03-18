@@ -23,7 +23,7 @@ export const JokeOverviewSite = () => {
 
   return (
     <div className="Jokes Overview">
-      <StandardHeader />
+      <StandardHeader previousPath="/"/>
       <Paper elevation={4} sx={{ p: 6, textAlign: 'center', bgcolor: 'white' }}>
         <Typography variant="h2" color="primary" gutterBottom>Witze vom feinsten</Typography>
 
