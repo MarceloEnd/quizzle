@@ -13,6 +13,8 @@ import { MemorySite } from '../gameSite/memory/MemorySite';
 import { MathSquareSite } from '../gameSite/mathSquare/MathSquareSite';
 import { MemoryColorSite } from '../gameSite/memory/MemoryColorSite';
 import { MemoryVersusSite } from '../gameSite/memory/MemoryVersusSite';
+import { SpotTheDifferenceSite } from '../gameSite/spotTheDifference/SpotTheDifferenceSite';
+
 
 const router = createBrowserRouter([
   {
@@ -30,6 +32,7 @@ const router = createBrowserRouter([
       { path: "spiele/memorycolor", element: <MemoryColorSite /> },
       { path: "spiele/memoryversus", element: <MemoryVersusSite /> },
       { path: "spiele/rechnequadrat", element: <MathSquareSite /> },
+      { path: "spiele/fehler", element: <SpotTheDifferenceSite /> },
     ],
   },
 ]);

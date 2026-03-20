@@ -19,6 +19,11 @@ import VideogameAssetIcon from '@mui/icons-material/VideogameAsset';
 // Grouped Game Data
 const GAMES = [
   { 
+    title: "Fehlersuche", 
+    basePath: "/spiele/fehler",
+    difficulties: [{ label: "Spielen", query: "", color: "#219538ff" }]
+  },
+  { 
     title: "Memory (Symbole)", 
     basePath: "/spiele/memory",
     difficulties: [
