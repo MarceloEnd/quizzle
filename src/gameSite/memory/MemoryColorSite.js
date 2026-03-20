@@ -107,56 +107,57 @@ export const MemoryColorSite = () => {
 
         {/* Responsive Grid System */}
         <Box sx={{ 
-            display: 'grid', 
-            gridTemplateColumns: { 
-                xs: 'repeat(4, 1fr)', // 4 per row on mobile
-                sm: 'repeat(6, 1fr)'  // 6 per row on desktop
-            }, 
+            display: 'flex', 
+            flexWrap: 'wrap', 
+            justifyContent: 'center', 
             gap: { xs: 1, sm: 2 }, 
-            maxWidth: { xs: '100%', sm: 800 }, 
+            maxWidth: { xs: 400, sm: 850 }, 
             margin: '0 auto',
-            px: { xs: 2, sm: 0 }
+            px: { xs: 2, sm: 0 },
+            boxSizing: 'border-box' 
         }}>
             {cards.map((card, index) => {
-              const isFlipped = flipped.includes(index) || matched.includes(index);
-              const isMatched = matched.includes(index);
+            const isFlipped = flipped.includes(index) || matched.includes(index);
+            const isMatched = matched.includes(index);
 
-              return (
+            return (
                 <Card 
-                  key={index}
-                  elevation={isFlipped ? 4 : 2}
-                  sx={{ 
+                key={index}
+                elevation={isFlipped ? 4 : 2}
+                sx={{ 
+                    flex: {
+                    xs: '0 0 calc(25% - 8px)',    // Exactly 4 per row
+                    sm: '0 0 calc(16.66% - 17px)' // Exactly 6 per row
+                    },
                     aspectRatio: '1/1',
                     transition: 'transform 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
                     transform: isFlipped ? 'rotateY(0deg)' : 'rotateY(180deg)',
-                    // Blue back, white front (acting as a border for the color)
                     bgcolor: isFlipped ? 'white' : '#1976d2',
                     borderRadius: { xs: 1.5, sm: 2 },
                     overflow: 'hidden',
-                    // Slight padding when flipped to show a white border around the color
                     p: isFlipped ? 0.8 : 0,
-                  }}
+                    boxSizing: 'border-box' // Crucial: prevents padding from expanding the card
+                }}
                 >
-                  <CardActionArea 
+                <CardActionArea 
                     onClick={() => handleCardClick(index)} 
                     sx={{ height: '100%', borderRadius: 'inherit' }}
-                  >
+                >
                     <Box 
-                      sx={{ 
+                    sx={{ 
                         width: '100%', 
                         height: '100%', 
                         borderRadius: 'inherit',
-                        bgcolor: card.color, // The actual game color
+                        bgcolor: card.color,
                         visibility: isFlipped ? 'visible' : 'hidden',
-                        // Prevents the color from appearing mirrored
                         transform: isFlipped ? 'none' : 'rotateY(180deg)',
                         transition: 'opacity 0.3s',
-                        opacity: isMatched ? 0.6 : 1, // Dim matched pairs slightly
-                      }} 
+                        opacity: isMatched ? 0.6 : 1,
+                    }} 
                     />
-                  </CardActionArea>
+                </CardActionArea>
                 </Card>
-              );
+            );
             })}
         </Box>
 

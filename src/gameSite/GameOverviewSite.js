@@ -37,6 +37,15 @@ const GAMES = [
     ]
   },
   { 
+    title: "Memory (Versus)", 
+    basePath: "/spiele/memoryversus",
+    difficulties: [
+      { label: "Leicht", query: "?leicht", color: "#4caf50" },
+      { label: "Normal", query: "", color: "#2196f3" },
+      { label: "Schwer", query: "?schwer", color: "#f44336" }
+    ]
+  },
+  { 
     title: "Sudoku 4x4", 
     basePath: "/spiele/sudoku4x4",
     difficulties: [{ label: "Spielen", query: "", color: "#219538ff" }]

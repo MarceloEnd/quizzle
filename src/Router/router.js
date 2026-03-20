@@ -12,6 +12,7 @@ import { Sudoku4x4Site } from '../gameSite/sudoku4x4/Sudoku4x4Site';
 import { MemorySite } from '../gameSite/memory/MemorySite';
 import { MathSquareSite } from '../gameSite/mathSquare/MathSquareSite';
 import { MemoryColorSite } from '../gameSite/memory/MemoryColorSite';
+import { MemoryVersusSite } from '../gameSite/memory/MemoryVersusSite';
 
 const router = createBrowserRouter([
   {
@@ -27,6 +28,7 @@ const router = createBrowserRouter([
       { path: "spiele/sudoku4x4", element: <Sudoku4x4Site /> },
       { path: "spiele/memory", element: <MemorySite /> },
       { path: "spiele/memorycolor", element: <MemoryColorSite /> },
+      { path: "spiele/memoryversus", element: <MemoryVersusSite /> },
       { path: "spiele/rechnequadrat", element: <MathSquareSite /> },
     ],
   },
