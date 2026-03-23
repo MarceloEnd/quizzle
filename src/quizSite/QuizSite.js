@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { getRandomQuestions } from './functions/json_helpers';
-import { QuizHeader } from './components/QuizHeader';
 import { QuizResult } from './components/QuizEndScreen';
 import { QuizArea } from './components/QuizArea';
 import { useParams } from 'react-router-dom';
 import { getQuiz } from './functions/get_quiz';
+import { StandardHeader } from '../components/StandardHeader';
 
 export const QuizSite = () => {
   const { id } = useParams();
@@ -26,15 +26,14 @@ export const QuizSite = () => {
 
   return (
     <div className="Quiz">
-       <QuizHeader
-              currentQuestion = {currentIndex}
-              score = {score}
-              totalQuestions = {10}
-              previousPath="/quizliste"
-            />
+        <StandardHeader
+          previousPath="/quizliste"
+        />
             { currentIndex < 10 &&
             <QuizArea 
               data={quizData[currentIndex]}
+              currentIndex={currentIndex}
+              totalQuestions = {10}
               onNext={handleNext}
             />
             }
@@ -43,7 +42,7 @@ export const QuizSite = () => {
             {currentIndex > 9 &&
             <QuizResult 
               score = {score}
-              total = {10}
+              totalQuestions = {10}
               onRestart={handleRestart}
             />
             }

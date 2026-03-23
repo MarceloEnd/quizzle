@@ -1,108 +1,116 @@
 import React from 'react';
-import { Box, Typography, Button, Paper, Divider, Stack } from '@mui/material';
+import { Box, Typography, Button, Paper, Stack, Zoom } from '@mui/material';
 import TrophyIcon from '@mui/icons-material/EmojiEvents';
 import ReplayIcon from '@mui/icons-material/Replay';
 import { ArrowBack } from '@mui/icons-material';
 import { Link } from 'react-router-dom';
 
-export const QuizResult = ({ score, total, onRestart }) => {
-  const percentage = Math.round((score / total) * 100);
+export const QuizResult = ({ score, totalQuestions, onRestart }) => {
+  const percentage = Math.round((score / totalQuestions) * 100);
   
-  // Custom feedback based on performance
   const getFeedback = () => {
-    if (percentage === 100) return { label: "MILLIONÄR!", color: "#ffd700", msg: "Perfekt! Du bist ein Einhorn-Experte!" };
-    if (percentage >= 70) return { label: "PROFI-REITER", color: "#c0c0c0", msg: "Super gemacht! Fast fehlerfrei." };
-    if (percentage >= 50) return { label: "STALL-MEISTER", color: "#cd7f32", msg: "Gut gemacht! Übung macht den Meister." };
-    return { label: "ANFÄNGER", color: "#3b82f6", msg: "Schau dir die Serie nochmal an und versuch es erneut!" };
+    if (percentage === 100) return { label: "MILLIONÄR!", color: "#FF9800", msg: "Perfekt! Du bist ein absoluter Experte!" };
+    if (percentage >= 70) return { label: "PROFI", color: "#FF9800", msg: "Super gemacht! Fast fehlerfrei." };
+    if (percentage >= 50) return { label: "STALL-MEISTER", color: "#795548", msg: "Gut gemacht! Übung macht den Meister." };
+    return { label: "ANFÄNGER", color: "#795548", msg: "Versuch es einfach nochmal, du schaffst das!" };
   };
 
   const status = getFeedback();
 
   return (
-    <Box sx={{ 
-      display: 'flex', 
-      justifyContent: 'center', 
-      alignItems: 'center', 
-      minHeight: '60vh' 
-    }}>
-      <Paper elevation={24} sx={{
-        p: 6,
-        maxWidth: 500,
-        width: '100%',
-        textAlign: 'center',
-        bgcolor: 'white',
-        border: `4px solid ${status.color}`,
-        borderRadius: 10,
-        color: '#3b82f6',
-        position: 'relative',
-        overflow: 'hidden'
+    <Zoom in={true}>
+      <Box sx={{ 
+        display: 'flex', 
+        justifyContent: 'center', 
+        alignItems: 'center', 
+        minHeight: '70vh',
+        px: 2 
       }}>
-        {/* Glowing Background Effect */}
-        <Box sx={{
-          position: 'absolute',
-          top: '-50%',
-          left: '-50%',
-          width: '200%',
-          height: '200%',
-          background: `radial-gradient(circle, ${status.color}22 0%, transparent 70%)`,
-          zIndex: 0
-        }} />
+        <Paper 
+          elevation={4} 
+          sx={{
+            p: { xs: 4, sm: 6 },
+            maxWidth: 500,
+            width: '100%',
+            textAlign: 'center',
+            bgcolor: 'white',
+            borderRadius: '24px',
+            border: `6px solid ${status.color}`,
+            position: 'relative'
+          }}
+        >
+          {/* Top Decorative Icon */}
+          <Box sx={{ 
+            position: 'absolute', 
+            top: -40, 
+            left: '50%', 
+            transform: 'translateX(-50%)',
+            bgcolor: 'white',
+            borderRadius: '50%',
+            p: 1,
+            border: `6px solid ${status.color}`
+          }}>
+            <TrophyIcon sx={{ fontSize: 60, color: status.color }} />
+          </Box>
 
-        <Box sx={{ position: 'relative', zIndex: 1 }}>
-          <TrophyIcon sx={{ fontSize: 100, color: status.color, mb: 2 }} />
-          
-          <Typography variant="h3" sx={{ fontWeight: 900, mb: 1, letterSpacing: 2 }}>
-            {status.label}
-          </Typography>
-          
-          <Typography variant="h5" sx={{ color: '#98950478', mb: 4 }}>
-             Gesamt: {score} von {total} Punkten
-          </Typography>
+          <Box sx={{ mt: 2 }}>
+            <Typography variant="h3" sx={{ fontWeight: 900, mb: 1, color: status.color }}>
+              {status.label}
+            </Typography>
+            
+            <Paper sx={{ bgcolor: '#FFF3E0', py: 1, px: 3, borderRadius: '12px', display: 'inline-block', mb: 3 }}>
+                <Typography variant="h6" sx={{ fontWeight: 'bold', color: '#795548' }}>
+                    {score} von {totalQuestions} Punkten
+                </Typography>
+            </Paper>
 
-          <Divider sx={{ bgcolor: 'rgba(255,255,255,0.1)', mb: 4 }} />
+            <Typography variant="body1" sx={{ mb: 5, fontSize: '1.2rem', color: '#555', fontStyle: 'italic' }}>
+              "{status.msg}"
+            </Typography>
 
-          <Typography variant="body1" sx={{ mb: 4, fontStyle: 'italic', opacity: 0.9 }}>
-            "{status.msg}"
-          </Typography>
+            <Stack direction="column" spacing={2}>
+              <Button 
+                variant="contained" 
+                size="large"
+                startIcon={<ReplayIcon />}
+                onClick={onRestart}
+                sx={{ 
+                  bgcolor: '#FF9800', 
+                  color: 'white',
+                  fontWeight: 'bold',
+                  py: 2,
+                  borderRadius: '16px',
+                  fontSize: '1.1rem',
+                  textTransform: 'none',
+                  '&:hover': { bgcolor: '#e68900' }
+                }}
+              >
+                Nochmal spielen
+              </Button>
 
-          <Stack direction="column" spacing={2} justifyContent="center">
-            <Button 
-              variant="contained" 
-              size="large"
-              startIcon={<ReplayIcon />}
-              onClick={onRestart}
-              sx={{ 
-                bgcolor: status.color, 
-                color: 'white',
-                fontWeight: 'bold',
-                px: 4,
-                borderRadius: '50px',
-                '&:hover': { bgcolor: '#fff' }
-              }}
-            >
-              Nochmal spielen
-            </Button>
-            <Button 
-              variant="contained" 
-              component={Link}
-              to="/"
-              size="large"
-              startIcon={<ArrowBack />}
-              onClick={onRestart}
-              sx={{ 
-                bgcolor: status.color, 
-                color: 'white',
-                fontWeight: 'bold',
-                px: 4,
-                borderRadius: '50px',
-                '&:hover': { bgcolor: '#fff' }
-              }}
-            >
-              Mehr
-            </Button>
-          </Stack>
-        </Box>
-      </Paper>
-    </Box>
+              <Button 
+                variant="outlined" 
+                component={Link}
+                to="/quizliste"
+                size="large"
+                startIcon={<ArrowBack />}
+                sx={{ 
+                  color: '#FF9800',
+                  borderColor: '#FF9800',
+                  borderWidth: 2,
+                  fontWeight: 'bold',
+                  py: 1.5,
+                  borderRadius: '16px',
+                  textTransform: 'none',
+                  '&:hover': { borderWidth: 2, bgcolor: '#FFF3E0' }
+                }}
+              >
+                Zur Übersicht
+              </Button>
+            </Stack>
+          </Box>
+        </Paper>
+      </Box>
+    </Zoom>
   );
 };
