@@ -73,6 +73,11 @@ const GAMES = [
       { label: "Schwer", query: "?schwer", color: "#f44336" }
     ]
   },
+  { 
+    title: "Wort Suche", 
+    basePath: "/spiele/wortsucheliste",
+    difficulties: [{ label: "Spielen", query: "", color: "#219538ff" }]
+  },
 ];
 
 export const GameOverviewSite = () => {

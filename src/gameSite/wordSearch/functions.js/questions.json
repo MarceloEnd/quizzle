@@ -1,0 +1,142 @@
+[
+  {
+    "id": 1,
+    "kategorie": "Farben",
+    "wort1": "gelb",
+    "wort2": "rot",
+    "wort3": "blau"
+  },
+  {
+    "id": 2,
+    "kategorie": "Tiere",
+    "wort1": "Hund",
+    "wort2": "Katze",
+    "wort3": "Maus"
+  },
+  {
+    "id": 3,
+    "kategorie": "Obst",
+    "wort1": "Apfel",
+    "wort2": "Banane",
+    "wort3": "Birne"
+  },
+  {
+    "id": 4,
+    "kategorie": "Spielzeug",
+    "wort1": "Puppe",
+    "wort2": "Auto",
+    "wort3": "Ball"
+  },
+  {
+    "id": 5,
+    "kategorie": "Fahrzeuge",
+    "wort1": "Bus",
+    "wort2": "Zug",
+    "wort3": "Laster"
+  },
+  {
+    "id": 6,
+    "kategorie": "Wetter",
+    "wort1": "Sonne",
+    "wort2": "Regen",
+    "wort3": "Wind"
+  },
+  {
+    "id": 7,
+    "kategorie": "Kleidung",
+    "wort1": "Hose",
+    "wort2": "Rock",
+    "wort3": "Schuh"
+  },
+  {
+    "id": 8,
+    "kategorie": "Koerper",
+    "wort1": "Nase",
+    "wort2": "Hand",
+    "wort3": "Arm"
+  },
+  {
+    "id": 9,
+    "kategorie": "Bauernhof",
+    "wort1": "Kuh",
+    "wort2": "Schwein",
+    "wort3": "Huhn"
+  },
+  {
+    "id": 10,
+    "kategorie": "Natur",
+    "wort1": "Baum",
+    "wort2": "Blume",
+    "wort3": "Gras"
+  },
+  {
+    "id": 11,
+    "kategorie": "Getraenke",
+    "wort1": "Wasser",
+    "wort2": "Milch",
+    "wort3": "Saft"
+  },
+  {
+    "id": 12,
+    "kategorie": "Zuhause",
+    "wort1": "Bett",
+    "wort2": "Tisch",
+    "wort3": "Lampe"
+  },
+  {
+    "id": 13,
+    "kategorie": "Formen",
+    "wort1": "Kreis",
+    "wort2": "Stern",
+    "wort3": "Herz"
+  },
+  {
+    "id": 14,
+    "kategorie": "Wald",
+    "wort1": "Fuchs",
+    "wort2": "Wolf",
+    "wort3": "Reh"
+  },
+  {
+    "id": 15,
+    "kategorie": "Essen",
+    "wort1": "Brot",
+    "wort2": "Nudeln",
+    "wort3": "Reis"
+  },
+  {
+    "id": 16,
+    "kategorie": "Garten",
+    "wort1": "Amsel",
+    "wort2": "Biene",
+    "wort3": "Wurm"
+  },
+  {
+    "id": 17,
+    "kategorie": "Himmel",
+    "wort1": "Wolke",
+    "wort2": "Mond",
+    "wort3": "Stern"
+  },
+  {
+    "id": 18,
+    "kategorie": "Meer",
+    "wort1": "Fisch",
+    "wort2": "Haifisch",
+    "wort3": "Sand"
+  },
+  {
+    "id": 19,
+    "kategorie": "Gemuese",
+    "wort1": "Gurke",
+    "wort2": "Tomate",
+    "wort3": "Mais"
+  },
+  {
+    "id": 20,
+    "kategorie": "Gefuehle",
+    "wort1": "froh",
+    "wort2": "stolz",
+    "wort3": "wild"
+  }
+]
