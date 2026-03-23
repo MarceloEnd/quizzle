@@ -2,11 +2,12 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { getKategorieById } from './functions.js/functions';
 import { StandardHeader } from '../../components/StandardHeader';
 import React, { useState, useEffect } from 'react';
-import { Button, Box, Typography, Paper, Grid, Container, Zoom, Fade } from '@mui/material';
+import { Button, Box, Typography, Paper, Grid, Container, Zoom, Fade, Divider } from '@mui/material';
 
 export const WordSearchSite = () => {
     const { id } = useParams();
     const wordId = parseInt(id);
+    const nextId = parseInt(id)+1;
     const navigate = useNavigate();
     
     const categoryData = getKategorieById(wordId);
@@ -98,7 +99,7 @@ export const WordSearchSite = () => {
 
     return (
         <Box sx={{ bgcolor: '#f0f4f8', minHeight: '100vh', pb: 8 }}>
-            <StandardHeader title="Wort-Puzzle" />
+            <StandardHeader previousPath="/spiele/wortsucheliste" />
             <Container maxWidth="md" sx={{ mt: 4 }}>
                 <Paper elevation={4} sx={{ p: { xs: 3, sm: 5 }, borderRadius: 8, border: '1px solid #e0e0e0' }}>
                     
@@ -147,7 +148,7 @@ export const WordSearchSite = () => {
                             </Box>
 
                             <Typography variant="overline" sx={{ display: 'block', textAlign: 'center', mb: 2, color: '#78909c' }}>
-                                Buchstaben-Pool
+                                <Divider/>
                             </Typography>
 
                             <Grid container spacing={2} justifyContent="center">
@@ -186,7 +187,7 @@ export const WordSearchSite = () => {
                                 <Button 
                                     variant="contained" 
                                     size="large" 
-                                    onClick={() => navigate('/')}
+                                    onClick={() => navigate('/spiele/wortsuche/'+nextId)}
                                     sx={{ borderRadius: 10, px: 6, py: 2, fontSize: '1.2rem', fontWeight: 'bold' }}
                                 >
                                     NÄCHSTE RUNDE
