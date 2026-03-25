@@ -78,6 +78,15 @@ const GAMES = [
     basePath: "/spiele/wortsucheliste",
     difficulties: [{ label: "Spielen", query: "", color: "#219538ff" }]
   },
+  { 
+    title: "Das kleine 1x1", 
+    basePath: "/spiele/1x1",
+    difficulties: [
+      { label: "Mal", query: "", color: "#4caf50" },
+      { label: "Mal Zeit", query: "zeit", color: "#2196f3" },
+      { label: "Geteilt", query: "geteilt", color: "#f44336" }
+    ]
+  },
 ];
 
 export const GameOverviewSite = () => {

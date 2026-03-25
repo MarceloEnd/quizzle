@@ -49,7 +49,7 @@ export const StartSite = () => {
 
   return (
     <div className="Start">
-      <StandardHeader />
+      <StandardHeader previousPath='' />
       <Paper elevation={0} sx={{ p: { xs: 3, md: 6 }, textAlign: 'center', bgcolor: 'transparent' }}>
 
         <List sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>

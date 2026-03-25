@@ -16,6 +16,9 @@ import { MemoryVersusSite } from '../gameSite/memory/MemoryVersusSite';
 import { SpotTheDifferenceSite } from '../gameSite/spotTheDifference/SpotTheDifferenceSite';
 import { WordSearchOverviewSite } from '../gameSite/wordSearch/WordSearchOverviewSite';
 import { WordSearchSite } from '../gameSite/wordSearch/WordSearchSite';
+import { EinmalEinsSite } from '../gameSite/1x1/1x1normalSite';
+import { EinmalEinsTimeAttackSite } from '../gameSite/1x1/1x1timeSite';
+import { GeteiltSite } from '../gameSite/1x1/1x1geteiltSite';
 
 
 const router = createBrowserRouter([
@@ -37,6 +40,10 @@ const router = createBrowserRouter([
       { path: "spiele/fehler", element: <SpotTheDifferenceSite /> },
       { path: "spiele/wortsucheliste", element: <WordSearchOverviewSite /> },
       { path: "spiele/wortsuche/:id", element: <WordSearchSite /> },
+      { path: "spiele/1x1", element: <EinmalEinsSite /> },
+      { path: "spiele/1x1zeit", element: <EinmalEinsTimeAttackSite /> },
+      { path: "spiele/1x1geteilt", element: <GeteiltSite /> },
+      
     ],
   },
 ]);

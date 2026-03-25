@@ -19,6 +19,7 @@ export const StandardHeader = ({previousPath}) => {
         <Toolbar disableGutters sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
           
           {/* 1. Left Section: Backlink */}
+          {previousPath !== '' &&
           <Box sx={{ width: { xs: 40, sm: 100 }, display: 'flex', justifyContent: 'flex-start' }}>
             <IconButton 
               component={Link} 
@@ -32,6 +33,7 @@ export const StandardHeader = ({previousPath}) => {
               <ArrowBackIosNewIcon fontSize="small" />
             </IconButton>
           </Box>
+          }
 
           {/* 2. Center Section: Logo and Name */}
           <Box
