@@ -8,30 +8,47 @@ import EmojiEventsIcon from '@mui/icons-material/EmojiEvents';
 import TimerIcon from '@mui/icons-material/Timer';
 import { StandardHeader } from '../../components/StandardHeader';
 
+/**
+ * Logic for Unique Division Questions:
+ * Generates all 100 possible divisions (Result / Divisor = Quotient),
+ * shuffles them, and returns the requested amount.
+ */
 const generateQuestions = (amount = 10) => {
-  const questions = [];
-  for (let i = 0; i < amount; i++) {
-    const a1 = Math.floor(Math.random() * 10) + 1;
-    const a2 = Math.floor(Math.random() * 10) + 1;
+  const pool = [];
+  
+  // 1. Create all 100 possible division tasks based on 1x1 to 10x10
+  for (let a1 = 1; a1 <= 10; a1++) {
+    for (let a2 = 1; a2 <= 10; a2++) {
+      const ergebnis = a1 * a2; 
+      const divisor = a1;
+      const quotient = a2; // The correct answer
+      
+      pool.push({ num1: ergebnis, num2: divisor, answer: quotient });
+    }
+  }
 
-    const ergebnis = a1 * a2; 
-    const correctAnswer = a2;
+  // 2. Shuffle the deck
+  const shuffledPool = pool.sort(() => Math.random() - 0.5);
+
+  // 3. Process the slice and create multiple choice options
+  return shuffledPool.slice(0, amount).map((task) => {
+    const { num1, num2, answer } = task;
     
-    const options = new Set([correctAnswer]);
+    const options = new Set([answer]);
     while (options.size < 4) {
+      // Offset of 1-5 for tighter, more challenging options
       const offset = Math.floor(Math.random() * 5) + 1;
-      const fake = Math.random() > 0.5 ? correctAnswer + offset : Math.max(1, correctAnswer - offset);
+      const fake = Math.random() > 0.5 ? answer + offset : Math.max(1, answer - offset);
       options.add(fake);
     }
     
-    questions.push({
-      num1: ergebnis, 
-      num2: a1, 
-      answer: correctAnswer,
+    return {
+      num1, 
+      num2, 
+      answer,
       options: Array.from(options).sort(() => Math.random() - 0.5)
-    });
-  }
-  return questions;
+    };
+  });
 };
 
 export const GeteiltSite = () => {
@@ -72,6 +89,7 @@ export const GeteiltSite = () => {
           setGameWon(true);
         }
       } else {
+        // Penalty for mistakes
         setTime(prev => prev + 5);
       }
       setSelectedAnswer(null);
@@ -92,7 +110,7 @@ export const GeteiltSite = () => {
     <>
       <StandardHeader previousPath="/spiele" />
       <Container maxWidth="sm" sx={{ mt: 4, textAlign: 'center', pb: 10 }}>
-        <Typography variant="h4" fontWeight="900" gutterBottom>Geteilt-Trainer</Typography>
+        <Typography variant="h4" fontWeight="900" gutterBottom>1x1 Geteilt</Typography>
 
         <Stack direction="row" spacing={2} justifyContent="center" alignItems="center" sx={{ mb: 2 }}>
           <Paper elevation={2} sx={{ px: 2, py: 0.5, display: 'flex', alignItems: 'center', bgcolor: '#f8f9fa' }}>
@@ -140,6 +158,9 @@ export const GeteiltSite = () => {
                     transition: 'all 0.15s ease-in-out',
                     transform: isSelected ? 'scale(0.95)' : 'scale(1)',
                     bgcolor: isSelected ? (isCorrect ? '#2e7d32' : '#d32f2f') : '#1976d2',
+                    '&:hover': {
+                      bgcolor: isSelected ? (isCorrect ? '#1b5e20' : '#c62828') : '#1565c0',
+                    },
                     '&.Mui-disabled': isSelected ? {
                         bgcolor: isCorrect ? '#2e7d32' : '#d32f2f',
                         color: 'white',
