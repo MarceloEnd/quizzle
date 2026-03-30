@@ -87,6 +87,16 @@ const GAMES = [
       { label: "Geteilt", query: "geteilt", color: "#f44336" }
     ]
   },
+  { 
+    title: "Wimmelbild", 
+    basePath: "/spiele/wimmelbildliste",
+    difficulties: [{ label: "Spielen", query: "", color: "#219538ff" }]
+  },
+  { 
+    title: "Lese-Maus", 
+    basePath: "/spiele/lesemausliste",
+    difficulties: [{ label: "Spielen", query: "", color: "#219538ff" }]
+  },
 ];
 
 export const GameOverviewSite = () => {

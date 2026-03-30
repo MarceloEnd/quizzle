@@ -1,5 +1,5 @@
 import { useParams, useNavigate } from 'react-router-dom';
-import { getKategorieById } from './functions.js/functions';
+import { getKategorieById } from './functions/functions';
 import { StandardHeader } from '../../components/StandardHeader';
 import React, { useState, useEffect } from 'react';
 import { Button, Box, Typography, Paper, Grid, Container, Zoom, Fade, Divider } from '@mui/material';

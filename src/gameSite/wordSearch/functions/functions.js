@@ -23,5 +23,6 @@ export const categoriesWordSearch = () => {
   }));
 
   // Sortierung alphabetisch nach dem Kategorienamen
-  return uniqueEntries.sort((a, b) => a.kategorie.localeCompare(b.kategorie));
+  //.sort((a, b) => a.kategorie.localeCompare(b.kategorie))
+  return uniqueEntries;
 };

@@ -12,21 +12,20 @@ import {
   Grid
 } from '@mui/material';
 import EmojiEventsIcon from '@mui/icons-material/EmojiEvents';
-import OhneFehler1 from '../../images/Fehlersuche/1OhneFehler.png'; 
-import MitFehler1 from '../../images/Fehlersuche/1MitFehler.png';   
+import MitFehler1 from '../../images/Wimmelbilder/1.png';   
 import { StandardHeader } from '../../components/StandardHeader';
 
 // Die Koordinaten in Prozent (x, y) und die Klick-Radius-Größe
 const DIFFERENCES = [
-  { id: 1, x: 34.4, y: 70.0, r: 4, name: "Ei-Symbol" },
-  { id: 2, x: 55.5, y: 14.4, r: 5, name: "Schmetterling" },
-  { id: 3, x: 43.3, y: 29.3, r: 3, name: "Herz-Wange" },
-  { id: 4, x: 8.7, y: 77.8, r: 5, name: "Blume links" },
-  { id: 5, x: 73.8, y: 47.5, r: 4, name: "Blume rechts" },
-  { id: 6, x: 89.2, y: 25.9, r: 4, name: "Gänseblümchen" }
+  { id: 1, x: 11.6, y: 30.0, r: 5, name: "Einhorn" },
+  { id: 2, x: 27.1, y: 27.7, r: 5, name: "Einhorn" },
+  { id: 3, x: 16.1, y: 64.9, r: 5, name: "Einhorn" },
+  { id: 4, x: 27.7, y: 74.8, r: 5, name: "Einhorn" },
+  { id: 5, x: 72.3, y: 50.5, r: 5, name: "Einhorn" },
+  { id: 6, x: 91.6, y: 75.9, r: 5, name: "Einhorn" }
 ];
 
-export const SpotTheDifferenceSite = () => {
+export const WimmelbildSite = () => {
   const [foundIds, setFoundIds] = useState([]);
   const [gameWon, setGameWon] = useState(false);
   const clickableImageRef = useRef(null); // Ref für das RECHTE Bild
@@ -67,7 +66,7 @@ export const SpotTheDifferenceSite = () => {
         <StandardHeader previousPath="/spiele"/>
         <Container maxWidth="xl" sx={{ py: 4, textAlign: 'center' }}>
         <Typography variant="h3" fontWeight="900" gutterBottom color="primary">
-            OSTERN: FINDE DIE FEHLER
+            FINDE DIE FEHLER
         </Typography>
         
         <Typography variant="h6" sx={{ mb: 3, color: 'text.secondary' }}>
@@ -75,24 +74,6 @@ export const SpotTheDifferenceSite = () => {
         </Typography>
 
         <Grid container spacing={4} justifyContent="center" alignItems="center">
-            
-            {/* Linkes Bild: Original */}
-            <Grid item xs={12} md={6}>
-                <Paper elevation={5} sx={{ borderRadius: 4, overflow: 'hidden' }}>
-                    <Box
-                    component="img"
-                    src={OhneFehler1}
-                    alt="Originalbild"
-                    sx={{ 
-                        width: '100%', 
-                        height: 'auto',
-                        display: 'block'
-                    }}
-                    />
-                </Paper>
-            </Grid>
-
-            {/* Rechtes Bild: Fehlerbild (Klickbar + Kreise) */}
             <Grid item xs={12} md={6}>
                 <Paper 
                     elevation={10}

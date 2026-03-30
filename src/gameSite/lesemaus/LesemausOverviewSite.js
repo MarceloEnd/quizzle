@@ -14,16 +14,16 @@ import {
   ArrowForwardIos as ArrowIcon, 
 } from '@mui/icons-material';
 import { StandardHeader } from '../../components/StandardHeader';
-import { categoriesWordSearch } from './functions/functions';
+import { categoriesLeseMaus } from './functions/functions';
 
-export const WordSearchOverviewSite = () => {
-  const themes = categoriesWordSearch();
+export const LesemausOverviewSite = () => {
+  const themes = categoriesLeseMaus();
 
   return (
-    <div className="Word Search Overview">
+    <div className="Lese Maus Overview">
       <StandardHeader previousPath="/spiele"/>
       <Paper elevation={4} sx={{ p: 6, textAlign: 'center', bgcolor: 'white' }}>
-        <Typography variant="h2" color="primary" gutterBottom>Wort Suche</Typography>
+        <Typography variant="h2" color="primary" gutterBottom>Lese Maus</Typography>
 
         <List sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
         {themes.map((item, index) => (
@@ -48,7 +48,7 @@ export const WordSearchOverviewSite = () => {
               <Button 
                 variant="contained" 
                 component={Link} 
-                to={"/spiele/wortsuche/"+item.id}
+                to={"/spiele/lesemaus/"+item.id}
                 sx={{ 
                   borderRadius: '12px', 
                   backgroundColor: '#219538ff',

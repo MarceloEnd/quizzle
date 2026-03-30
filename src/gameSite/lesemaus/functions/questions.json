@@ -1,0 +1,102 @@
+[
+  {
+    "id": 1,
+    "kategorie": "Sprechende Tiere",
+    "wort": "Benjamin Bluemchen"
+  },
+  {
+    "id": 2,
+    "kategorie": "Zauberei & Magie",
+    "wort": "Harry Potter"
+  },
+  {
+    "id": 3,
+    "kategorie": "Detektive",
+    "wort": "Die drei ???"
+  },
+  {
+    "id": 4,
+    "kategorie": "Starke Maedchen",
+    "wort": "Pippi Langstrumpf"
+  },
+  {
+    "id": 5,
+    "kategorie": "Abenteuer im Meer",
+    "wort": "Findet Nemo"
+  },
+  {
+    "id": 6,
+    "kategorie": "Superhelden",
+    "wort": "Paw Patrol"
+  },
+  {
+    "id": 7,
+    "kategorie": "Maerchenwelt",
+    "wort": "Die Eiskoenigin"
+  },
+  {
+    "id": 8,
+    "kategorie": "Sprechende Tiere",
+    "wort": "Bibi und Tina"
+  },
+  {
+    "id": 9,
+    "kategorie": "Weltraum & Sci-Fi",
+    "wort": "Star Wars Rebels"
+  },
+  {
+    "id": 10,
+    "kategorie": "Alltagsgeschichten",
+    "wort": "Conni"
+  },
+  {
+    "id": 11,
+    "kategorie": "Zauberei & Magie",
+    "wort": "Bibi Blocksberg"
+  },
+  {
+    "id": 12,
+    "kategorie": "Natur & Wald",
+    "wort": "Biene Maja"
+  },
+  {
+    "id": 13,
+    "kategorie": "Freundschaft",
+    "wort": "Peppa Wutz"
+  },
+  {
+    "id": 14,
+    "kategorie": "Drachen & Wikinger",
+    "wort": "Drachenzaehmen leicht gemacht"
+  },
+  {
+    "id": 15,
+    "kategorie": "Detektive",
+    "wort": "TKKG"
+  },
+  {
+    "id": 16,
+    "kategorie": "Urzeit & Dinos",
+    "wort": "In einem Land vor unserer Zeit"
+  },
+  {
+    "id": 17,
+    "kategorie": "Klassische Literatur",
+    "wort": "Jim Knopf"
+  },
+  {
+    "id": 18,
+    "kategorie": "Spielzeugwelt",
+    "wort": "Toy Story"
+  },
+  {
+    "id": 19,
+    "kategorie": "Dschungelabenteuer",
+    "wort": "Das Dschungelbuch"
+  },
+  {
+    "id": 20,
+    "kategorie": "Abenteuer im Wald",
+    "wort": "Der Grueffelo"
+  }
+]

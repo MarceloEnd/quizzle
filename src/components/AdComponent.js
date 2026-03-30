@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 
-const AdComponent = ({ adSlot }) => {
+export const AdComponent = ({ adSlot }) => {
   useEffect(() => {
     try {
       (window.adsbygoogle = window.adsbygoogle || []).push({});
@@ -10,7 +10,7 @@ const AdComponent = ({ adSlot }) => {
   }, []);
 
   return (
-    <div style={{ overflow: 'hidden', textAlign: 'center' }}>
+    <div style={{ overflow: 'hidden', textAlign: 'center', height: '10vh' }}>
       <ins 
         className="adsbygoogle"
         style={{ display: 'block' }}
@@ -22,5 +22,3 @@ const AdComponent = ({ adSlot }) => {
     </div>
   );
 };
-
-export default AdComponent;
