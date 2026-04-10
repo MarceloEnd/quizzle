@@ -2,18 +2,13 @@ import React, { useState, useRef } from 'react';
 import { 
   Box, 
   Container, 
-  Typography, 
-  Button, 
+  Typography,  
   Paper, 
-  Dialog, 
-  DialogTitle, 
-  DialogContent, 
-  DialogActions,
   Grid
 } from '@mui/material';
-import EmojiEventsIcon from '@mui/icons-material/EmojiEvents';
 import MitFehler1 from '../../images/Wimmelbilder/1.png';   
 import { StandardHeader } from '../../components/StandardHeader';
+import { EndMenuNextGame } from '../../components/EndMenuNextGame';
 
 // Die Koordinaten in Prozent (x, y) und die Klick-Radius-Größe
 const DIFFERENCES = [
@@ -54,11 +49,6 @@ export const WimmelbildSite = () => {
         setGameWon(true);
       }
     }
-  };
-
-  const resetGame = () => {
-    setFoundIds([]);
-    setGameWon(false);
   };
 
   return (
@@ -124,32 +114,15 @@ export const WimmelbildSite = () => {
             </Grid>
         </Grid>
 
-        {/* Gewonnen-Dialog */}
-        <Dialog 
-            open={gameWon} 
-            PaperProps={{ sx: { borderRadius: 5, p: 2, textAlign: 'center' } }}
-        >
-            <DialogTitle sx={{ fontSize: '2rem', fontWeight: 'bold', color: 'success.main' }}>
-            <EmojiEventsIcon sx={{ fontSize: 60, mb: 1, color: '#ffc107' }} /> <br />
-            SUPER GEMACHT!
-            </DialogTitle>
-            <DialogContent>
-            <Typography variant="h6">
-                Du hast alle {DIFFERENCES.length} Unterschiede gefunden!
-            </Typography>
-            </DialogContent>
-            <DialogActions sx={{ justifyContent: 'center', pb: 3 }}>
-            <Button 
-                variant="contained" 
-                size="large" 
-                onClick={resetGame}
-                sx={{ borderRadius: 10, px: 4 }}
-            >
-                Nochmal spielen
-            </Button>
-            </DialogActions>
-        </Dialog>
-        </Container>
+        {/* Gewinner Dialog */}
+        <EndMenuNextGame 
+          gameWon={gameWon} 
+          winText={`SUPER GEMACHT!`}
+          winAnswer={`Du hast alle ${DIFFERENCES.length} Unterschiede gefunden!`}
+          nextGameLink={`/spiele/wimmelbild/1`}
+          backLink={`/spiele/wimmelbildliste`}
+        />  
+      </Container>
     </>
   );
 };

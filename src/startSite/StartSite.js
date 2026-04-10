@@ -1,5 +1,5 @@
 import { StandardHeader } from "../components/StandardHeader";
-import { Link } from 'react-router-dom'; // 1. Import Link
+import { Link } from 'react-router-dom';
 import { 
   Typography, 
   Button, 
@@ -7,19 +7,20 @@ import {
   List,
   ListItem,
   ListItemIcon,
-  ListItemText
-
+  ListItemText,
+  Container,
 } from '@mui/material';
 import { 
   Psychology as QuizIcon, 
   EmojiEmotions as JokeIcon, 
-  ArrowForwardIos as ArrowIcon 
+  ArrowForwardIos as ArrowIcon,
 } from '@mui/icons-material';
 import VideogameAssetIcon from '@mui/icons-material/VideogameAsset';
-
-
+import { Banner } from "./components/banner";
 
 export const StartSite = () => {
+  
+
   const activities = [
     {
       title: "Quiz",
@@ -50,47 +51,47 @@ export const StartSite = () => {
   return (
     <div className="Start">
       <StandardHeader previousPath='' />
-      <Paper elevation={0} sx={{ p: { xs: 3, md: 6 }, textAlign: 'center', bgcolor: 'transparent' }}>
+      <Banner />
 
-        <List sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
-        {activities.map((item, index) => (
-          <Paper 
-            key={index} 
-            elevation={3} 
-            sx={{ 
-              borderRadius: '20px', 
-              overflow: 'hidden',
-              backgroundColor: item.color,
-              transition: 'transform 0.2s',
-              '&:hover': { transform: 'scale(1.02)' }
-            }}
-          >
-            <ListItem sx={{ p: 3 }}>
-              <ListItemIcon>
-                {item.icon}
-              </ListItemIcon>
-              <ListItemText 
-                primary={<Typography variant="h6" sx={{ fontWeight: 'bold' }}>{item.title}</Typography>}
-                secondary={item.description}
-              />
-              <Button 
-                variant="contained" 
-                component={Link} 
-                to={item.path}
+      <Container maxWidth="md">
+        <Paper elevation={0} sx={{ p: { xs: 3, md: 6 }, textAlign: 'center', bgcolor: 'transparent' }}>
+          <List sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
+            {activities.map((item, index) => (
+              <Paper 
+                key={index} 
+                elevation={3} 
                 sx={{ 
-                  borderRadius: '12px', 
-                  backgroundColor: item.btnColor,
-                  '&:hover': { backgroundColor: item.btnColor, filter: 'brightness(0.9)' }
+                  borderRadius: '20px', 
+                  backgroundColor: item.color,
+                  transition: 'transform 0.2s',
+                  '&:hover': { transform: 'scale(1.02)' }
                 }}
-                endIcon={<ArrowIcon />}
               >
-                Go!
-              </Button>
-            </ListItem>
-          </Paper>
-         ))}
-        </List>
-      </Paper>
+                <ListItem sx={{ p: 3 }}>
+                  <ListItemIcon>{item.icon}</ListItemIcon>
+                  <ListItemText 
+                    primary={<Typography variant="h6" sx={{ fontWeight: 'bold' }}>{item.title}</Typography>}
+                    secondary={item.description}
+                  />
+                  <Button 
+                    variant="contained" 
+                    component={Link} 
+                    to={item.path}
+                    sx={{ 
+                      borderRadius: '12px', 
+                      backgroundColor: item.btnColor,
+                      '&:hover': { backgroundColor: item.btnColor, filter: 'brightness(0.9)' }
+                    }}
+                    endIcon={<ArrowIcon />}
+                  >
+                    Go!
+                  </Button>
+                </ListItem>
+              </Paper>
+            ))}
+          </List>
+        </Paper>
+      </Container>
     </div>
   );
 }

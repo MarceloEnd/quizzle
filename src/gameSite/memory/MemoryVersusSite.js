@@ -1,11 +1,8 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import { 
-  Box, Container, Typography, Button, 
-  Card, CardActionArea, Dialog, DialogTitle, DialogContent, DialogActions, Grid, Paper
-} from '@mui/material';
-import EmojiEventsIcon from '@mui/icons-material/EmojiEvents';
+import { Box, Container, Typography, Card, CardActionArea, Grid, Paper } from '@mui/material';
 import { StandardHeader } from '../../components/StandardHeader';
 import { useSearchParams } from 'react-router-dom';
+import { EndMenuNewGame } from '../../components/EndMenuNewGame';
 
 const SYMBOLS = [
   '🍎', '🍌', '🍇', '🍒', '🍓', '🥝', '🍍', '🥥', 
@@ -187,21 +184,14 @@ export const MemoryVersusSite = () => {
               );
             })}
         </Box>
-
-        <Dialog open={gameWon} PaperProps={{ sx: { borderRadius: 5, p: 3, textAlign: 'center' } }}>
-            <DialogTitle>
-              <EmojiEventsIcon sx={{ fontSize: 100, color: '#ffc107' }} />
-              <Typography variant="h4" fontWeight="900">{getWinnerText()}</Typography>
-            </DialogTitle>
-            <DialogContent>
-              <Typography variant="h6">Endstand: {scores[1]} - {scores[2]}</Typography>
-            </DialogContent>
-            <DialogActions>
-              <Button variant="contained" size="large" onClick={initGame} fullWidth sx={{ py: 2, borderRadius: 3, fontWeight: 'bold' }}>
-                  Nochmal spielen
-              </Button>
-            </DialogActions>
-        </Dialog>
+        
+        <EndMenuNewGame 
+          gameWon={gameWon} 
+          winText={getWinnerText()}
+          winAnswer={`Endstand: ${scores[1]} - ${scores[2]}`}
+          restart={initGame}
+          backLink={`/spiele`}
+        />
       </Container>
     </Box>
   );

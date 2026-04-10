@@ -1,14 +1,14 @@
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { getKategorieById } from './functions/functions';
 import { StandardHeader } from '../../components/StandardHeader';
 import React, { useState, useEffect } from 'react';
-import { Button, Box, Typography, Paper, Grid, Container, Zoom, Fade, Divider } from '@mui/material';
+import { Button, Box, Typography, Paper, Grid, Container, Zoom, Divider } from '@mui/material';
+import { EndMenuNextGame } from '../../components/EndMenuNextGame';
 
 export const WordSearchSite = () => {
     const { id } = useParams();
     const wordId = parseInt(id);
     const nextId = parseInt(id)+1;
-    const navigate = useNavigate();
     
     const categoryData = getKategorieById(wordId);
 
@@ -180,20 +180,16 @@ export const WordSearchSite = () => {
                             </Grid>
                         </Box>
                     ) : (
-                        <Fade in={true}>
-                            <Box sx={{ textAlign: 'center', py: 5 }}>
-                                <Typography variant="h1" sx={{ mb: 2 }}>🌟</Typography>
-                                <Typography variant="h4" sx={{ fontWeight: 'bold', mb: 3 }}>EXZELLENT!</Typography>
-                                <Button 
-                                    variant="contained" 
-                                    size="large" 
-                                    onClick={() => navigate('/spiele/wortsuche/'+nextId)}
-                                    sx={{ borderRadius: 10, px: 6, py: 2, fontSize: '1.2rem', fontWeight: 'bold' }}
-                                >
-                                    NÄCHSTE RUNDE
-                                </Button>
-                            </Box>
-                        </Fade>
+                        <>
+                            {/* Gewinner Dialog */}
+                            <EndMenuNextGame 
+                                gameWon={isFinished} 
+                                winText={"Du hast alle Wörter gefunden"}
+                                winAnswer={'Exzellent'}
+                                nextGameLink={`/spiele/wortsuche/${nextId}`}
+                                backLink={`/spiele/wortsucheliste`}
+                          />
+                        </>
                     )}
                 </Paper>
             </Container>

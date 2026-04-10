@@ -1,13 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { 
-  Box, Typography, Button, Paper, Grid, Divider, Container, 
-  Dialog, DialogTitle, DialogContent, DialogActions } from '@mui/material';
-import { useParams, Link } from 'react-router-dom';
-import EmojiEventsIcon from '@mui/icons-material/EmojiEvents';
-import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
-import ReplayIcon from '@mui/icons-material/Replay';
+  Box, Typography, Button, Paper, Grid, Divider, Container, } from '@mui/material';
+import { useParams} from 'react-router-dom';
 import { StandardHeader } from '../../components/StandardHeader';
 import { getKategorieById } from './functions/functions';
+import { EndMenuNextGame } from '../../components/EndMenuNextGame';
 
 export const LesemausSite = () => {
   const { id } = useParams();
@@ -47,18 +44,13 @@ export const LesemausSite = () => {
     }
   };
 
-  const startNewGame = () => {
-    setEingabe(Array(wortOhneLeerzeichen.length).fill(""));
-    setSelectedIdx(0);
-  };
-
   if (!categoryData) return <Typography sx={{ p: 4, textAlign: 'center' }}>Rätsel wird geladen oder nicht gefunden...</Typography>;
 
   let charCounter = 0;
 
   return (
     <Box sx={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', bgcolor: '#F8F9FA' }}>
-      <StandardHeader previousPath="/spiele/lesemausliste" />
+      <StandardHeader />
       
       <Container maxWidth="md" sx={{ py: 6, flexGrow: 1 }}>
         <Paper elevation={0} sx={{ p: { xs: 2, sm: 4 }, textAlign: 'center', bgcolor: 'transparent' }}>
@@ -135,51 +127,14 @@ export const LesemausSite = () => {
       </Container>
 
       {/* Gewinner Dialog */}
-      <Dialog 
-        open={istRichtig} 
-        maxWidth="xs" 
-        fullWidth 
-        PaperProps={{ sx: { borderRadius: 4, textAlign: 'center', p: 2 } }}
-      >
-        <DialogTitle>
-          <EmojiEventsIcon sx={{ fontSize: 80, color: '#ffc107', mb: 1 }} />
-          <Typography variant="h4" fontWeight="900">GEWONNER!</Typography>
-        </DialogTitle>
-        <DialogContent>
-          <Typography variant="body1" sx={{ color: '#636E72', mb: 1 }}>
-            Du hast das Rätsel gelöst:
-          </Typography>
-          <Box sx={{ p: 2, bgcolor: '#f0f7ff', borderRadius: 2, border: '2px dashed #219538' }}>
-            <Typography variant="h5" fontWeight="900" color="primary">
-              {originalWort}
-            </Typography>
-          </Box>
-        </DialogContent>
-        <DialogActions sx={{ flexDirection: 'column', gap: 2, px: 3, pb: 4 }}>
-          <Button 
-            variant="contained" 
-            size="large" 
-            component={Link}
-            to={`/spiele/lesemaus/${wordId + 1}`}
-            fullWidth 
-            color="success"
-            sx={{ py: 1.5, borderRadius: 2, fontWeight: 'bold', fontSize: '1.1rem' }}
-            endIcon={<ArrowForwardIcon />}
-          >
-            Nächstes Rätsel
-          </Button>
-          <Button 
-            variant="outlined" 
-            size="medium" 
-            onClick={startNewGame} 
-            fullWidth 
-            sx={{ py: 1, borderRadius: 2, fontWeight: 'bold', color: '#636E72', borderColor: '#636E72' }}
-            startIcon={<ReplayIcon />}
-          >
-            Nochmal spielen
-          </Button>
-        </DialogActions>
-      </Dialog>
+      <EndMenuNextGame 
+        gameWon={istRichtig} 
+        winText={"Du hast das Rätsel gelöst:"}
+        winAnswer={originalWort}
+        nextGameLink={`/spiele/lesemaus/${wordId + 1}`}
+        backLink={`/spiele/lesemausliste`}
+      />
+
     </Box>
   );
 };

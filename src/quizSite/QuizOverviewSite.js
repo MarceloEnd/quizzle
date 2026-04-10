@@ -7,8 +7,9 @@ import {
   List,
   ListItem,
   ListItemIcon,
-  ListItemText
-
+  ListItemText,
+  useTheme,
+  useMediaQuery
 } from '@mui/material';
 import { 
   Psychology as QuizIcon, 
@@ -31,11 +32,16 @@ export const QuizOverviewSite = () => {
     }
   ];
 
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+
   return (
     <div className="Start">
       <StandardHeader previousPath="/"/>
       <Paper elevation={4} sx={{ p: 6, textAlign: 'center', bgcolor: 'white' }}>
-        <Typography variant="h2" color="primary" gutterBottom>Teste dein Quiz Wissen</Typography>
+        <Typography variant={isMobile ? "h4" : "h2"} color="primary" gutterBottom sx={{ fontWeight: 800, mb: 4 }}>
+          Teste dein Quiz Wissen
+        </Typography>
 
         <List sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
         {activities.map((item, index) => (

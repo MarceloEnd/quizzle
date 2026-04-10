@@ -1,4 +1,3 @@
-import { StandardHeader } from "../components/StandardHeader";
 import { Link } from 'react-router-dom';
 import { 
   Typography, 
@@ -7,30 +6,25 @@ import {
   List,
   ListItem,
   ListItemIcon,
-  ListItemText,
-  useTheme,
-  useMediaQuery
+  ListItemText
+
 } from '@mui/material';
 import { 
   Psychology as QuizIcon, 
   ArrowForwardIos as ArrowIcon, 
 } from '@mui/icons-material';
-import { categories } from "./functions/helper";
+import { StandardHeader } from '../../components/StandardHeader';
+import { categoriesWortSchlange } from './functions/functions';
 
 
-
-export const JokeOverviewSite = () => {
-  const themes = categories()
-  const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+export const WortschlangeOverviewSite = () => {
+  const themes = categoriesWortSchlange();
 
   return (
-    <div className="Jokes Overview">
-      <StandardHeader previousPath="/"/>
+    <div className="Word Search Overview">
+      <StandardHeader previousPath="/spiele"/>
       <Paper elevation={4} sx={{ p: 6, textAlign: 'center', bgcolor: 'white' }}>
-        <Typography variant={isMobile ? "h4" : "h2"} color="primary" gutterBottom sx={{ fontWeight: 800, mb: 4 }}>
-          Witze vom feinsten
-        </Typography>
+        <Typography variant="h2" color="primary" gutterBottom>Wort Schlange</Typography>
 
         <List sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
         {themes.map((item, index) => (
@@ -40,26 +34,26 @@ export const JokeOverviewSite = () => {
             sx={{ 
               borderRadius: '20px', 
               overflow: 'hidden',
-              backgroundColor: '#FCE4EC',
+              backgroundColor: '#e3fae8ff',
               transition: 'transform 0.2s',
               '&:hover': { transform: 'scale(1.02)' }
             }}
           >
             <ListItem sx={{ p: 3 }}>
               <ListItemIcon>
-                <QuizIcon sx={{ fontSize: 40, color: '#E91E63' }} />
+                <QuizIcon sx={{ fontSize: 40, color: '#219538ff' }} />
               </ListItemIcon>
               <ListItemText 
-                primary={<Typography variant="h6" sx={{ fontWeight: 'bold' }}>{item}</Typography>}
+                primary={<Typography variant="h6" sx={{ fontWeight: 'bold' }}>{item.kategorie}</Typography>}
               />
               <Button 
                 variant="contained" 
                 component={Link} 
-                to={"/witz/"+index}
+                to={"/spiele/wortschlange/"+item.id}
                 sx={{ 
                   borderRadius: '12px', 
-                  backgroundColor: '#E91E63',
-                  '&:hover': { backgroundColor: '#FFF3E0', filter: 'brightness(0.9)' }
+                  backgroundColor: '#219538ff',
+                  '&:hover': { backgroundColor: '#219538ff', filter: 'brightness(0.9)' }
                 }}
                 endIcon={<ArrowIcon />}
               >

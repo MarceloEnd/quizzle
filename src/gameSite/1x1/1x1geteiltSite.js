@@ -1,12 +1,12 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { 
-  Box, Paper, Typography, Container, Button, Stack, Dialog, DialogTitle, DialogContent, DialogActions, LinearProgress 
+  Box, Paper, Typography, Container, Button, Stack, LinearProgress 
 } from '@mui/material';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import PauseIcon from '@mui/icons-material/Pause';
-import EmojiEventsIcon from '@mui/icons-material/EmojiEvents';
 import TimerIcon from '@mui/icons-material/Timer';
 import { StandardHeader } from '../../components/StandardHeader';
+import { EndMenuNewGame } from '../../components/EndMenuNewGame';
 
 /**
  * Logic for Unique Division Questions:
@@ -173,23 +173,14 @@ export const GeteiltSite = () => {
             );
           })}
         </Box>
-
-        <Dialog open={gameWon} maxWidth="xs" fullWidth PaperProps={{ sx: { borderRadius: 5, textAlign: 'center' } }}>
-          <DialogTitle sx={{ pt: 4 }}>
-            <EmojiEventsIcon sx={{ fontSize: 100, color: '#ffc107' }} />
-            <Typography variant="h3" fontWeight="900">FERTIG!</Typography>
-          </DialogTitle>
-          <DialogContent>
-            <Box sx={{ my: 2, p: 3, bgcolor: '#f0f7ff', borderRadius: 3 }}>
-              <Typography variant="h5" fontWeight="bold">Zeit: {Math.floor(time / 60)}:{(time % 60).toString().padStart(2, '0')}</Typography>
-            </Box>
-          </DialogContent>
-          <DialogActions sx={{ justifyContent: 'center', pb: 4 }}>
-            <Button variant="contained" size="large" onClick={startNewGame} sx={{ px: 6, py: 2, borderRadius: 3, fontWeight: 'bold' }}>
-              Nochmal spielen
-            </Button>
-          </DialogActions>
-        </Dialog>
+        
+        <EndMenuNewGame 
+          gameWon={gameWon} 
+          winText={"GEWINNER!"}
+          winAnswer={`Zeit: ${time}s`}
+          restart={startNewGame}
+          backLink={`/spiele`}
+        />
       </Container>
     </>
   );

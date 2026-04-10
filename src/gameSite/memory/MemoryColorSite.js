@@ -1,11 +1,11 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { 
-  Box, Container, Typography, Button, 
-  Card, CardActionArea, Dialog 
+  Box, Container, Typography,
+  Card, CardActionArea
 } from '@mui/material';
-import EmojiEventsIcon from '@mui/icons-material/EmojiEvents';
 import { StandardHeader } from '../../components/StandardHeader';
 import { useSearchParams } from 'react-router-dom';
+import { EndMenuNewGame } from '../../components/EndMenuNewGame';
 
 // Vibrant, kid-friendly color palette
 const COLORS = [
@@ -162,35 +162,13 @@ export const MemoryColorSite = () => {
         </Box>
 
         {/* Win Dialog */}
-        <Dialog 
-          open={gameWon} 
-          PaperProps={{ sx: { borderRadius: 5, p: 3, textAlign: 'center', maxWidth: '350px' } }}
-        >
-            <Box sx={{ py: 2 }}>
-              <EmojiEventsIcon sx={{ fontSize: 100, color: '#ffc107', mb: 1 }} />
-              <Typography variant="h4" fontWeight="900" gutterBottom>SUPER!</Typography>
-              <Typography variant="h6" sx={{ mb: 3 }}>
-                Du hast es in {moves} Zügen geschafft.
-              </Typography>
-              <Button 
-                variant="contained" 
-                size="large" 
-                onClick={initGame} 
-                fullWidth 
-                sx={{ 
-                  py: 1.5, 
-                  borderRadius: 3, 
-                  fontWeight: 'bold',
-                  fontSize: '1.1rem',
-                  backgroundColor: '#4CAF50',
-                  '&:hover': { backgroundColor: '#45a049' }
-                }}
-              >
-                Nochmal spielen
-              </Button>
-            </Box>
-        </Dialog>
-
+        <EndMenuNewGame 
+          gameWon={gameWon} 
+          winText={"GEWINNER!"}
+          winAnswer={`In ${moves} Zügen gelöst`}
+          restart={initGame}
+          backLink={`/spiele`}
+        />
       </Container>
     </Box>
   );

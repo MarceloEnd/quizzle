@@ -79,6 +79,11 @@ const GAMES = [
     difficulties: [{ label: "Spielen", query: "", color: "#219538ff" }]
   },
   { 
+    title: "Wort Schlange", 
+    basePath: "/spiele/wortschlangeliste",
+    difficulties: [{ label: "Spielen", query: "", color: "#219538ff" }]
+  },
+  { 
     title: "Das kleine 1x1", 
     basePath: "/spiele/1x1",
     difficulties: [

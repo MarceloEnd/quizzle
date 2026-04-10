@@ -1,14 +1,14 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { 
-  Box, Paper, Typography, Container, Button, Stack, Dialog, DialogTitle, DialogContent, DialogActions 
+  Box, Paper, Typography, Container, Button, Stack
 } from '@mui/material';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import PauseIcon from '@mui/icons-material/Pause';
-import EmojiEventsIcon from '@mui/icons-material/EmojiEvents';
 import TimerIcon from '@mui/icons-material/Timer';
 import { createNewGame } from './functions/functions';
 import { StandardHeader } from '../../components/StandardHeader';
 import { useSearchParams } from 'react-router-dom';
+import { EndMenuNewGame } from '../../components/EndMenuNewGame';
 
 export const Sudoku6x6Site = () => {
   const [searchParams] = useSearchParams();
@@ -156,24 +156,13 @@ export const Sudoku6x6Site = () => {
       </Stack>
 
       {/* --- ENDSCREEN DIALOG --- */}
-      <Dialog open={gameWon} maxWidth="xs" fullWidth PaperProps={{ sx: { borderRadius: 4, textAlign: 'center' } }}>
-        <DialogTitle sx={{ pt: 4 }}>
-          <EmojiEventsIcon sx={{ fontSize: 80, color: '#ffc107', mb: 1 }} />
-          <Typography variant="h4" fontWeight="900">GEWINNER!</Typography>
-        </DialogTitle>
-        <DialogContent>
-          <Box sx={{ my: 3, p: 2, bgcolor: '#f0f7ff', borderRadius: 2 }}>
-            <Typography variant="h5" fontWeight="bold" color="primary">
-               Zeit: {formatTime(time)}
-            </Typography>
-          </Box>
-        </DialogContent>
-        <DialogActions sx={{ justifyContent: 'center', pb: 4 }}>
-          <Button variant="contained" size="large" onClick={startNewGame} fullWidth sx={{ mx: 4, py: 1.5, borderRadius: 2, fontWeight: 'bold' }}>
-            Neues Spiel
-          </Button>
-        </DialogActions>
-      </Dialog>
+      <EndMenuNewGame 
+        gameWon={gameWon} 
+        winText={"GEWINNER!"}
+        winAnswer={`Zeit: ${formatTime(time)}`}
+        restart={startNewGame}
+        backLink={`/spiele`}
+      />
     </Container>
     </>
   );

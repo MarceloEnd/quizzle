@@ -28,6 +28,8 @@ import { WimmelbilderOverviewSite } from '../gameSite/wimmelbild/WimmelbildOverv
 import { WimmelbildSite } from '../gameSite/wimmelbild/WimmelbildSite';
 import { LesemausOverviewSite } from '../gameSite/lesemaus/LesemausOverviewSite';
 import { LesemausSite } from '../gameSite/lesemaus/LesemausSite';
+import { WortschlangeOverviewSite } from '../gameSite/wortschlange/WortschlangeOverviewSite';
+import { WortSchlangeSite } from '../gameSite/wortschlange/WortschlangeSite';
 
 const RootLayout = () => (
   <Box sx={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
@@ -63,12 +65,14 @@ const router = createBrowserRouter([
       { path: "spiele/1x1", element: <EinmalEinsSite /> },
       { path: "spiele/1x1zeit", element: <EinmalEinsTimeAttackSite /> },
       { path: "spiele/1x1geteilt", element: <GeteiltSite /> },
-      { path: "agb", element: <AgbSite/> },
-      { path: "impressum", element: <ImpressumSite /> },
       { path: "spiele/wimmelbildliste", element: <WimmelbilderOverviewSite /> },
       { path: "spiele/wimmelbild/:id", element: <WimmelbildSite /> },
       { path: "spiele/lesemausliste", element: <LesemausOverviewSite /> },
       { path: "spiele/lesemaus/:id", element: <LesemausSite /> },
+      { path: "spiele/wortschlangeliste", element: <WortschlangeOverviewSite /> },
+      { path: "spiele/wortschlange/:id", element: <WortSchlangeSite /> },
+      { path: "agb", element: <AgbSite/> },
+      { path: "impressum", element: <ImpressumSite /> },
     ],
   },
 ]);

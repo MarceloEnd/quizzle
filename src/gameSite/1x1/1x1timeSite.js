@@ -1,13 +1,13 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { 
-  Box, Paper, Typography, Container, Button, Stack, Dialog, DialogTitle, DialogContent, DialogActions, LinearProgress 
+  Box, Paper, Typography, Container, Button, Stack, LinearProgress 
 } from '@mui/material';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import PauseIcon from '@mui/icons-material/Pause';
-import EmojiEventsIcon from '@mui/icons-material/EmojiEvents';
 import TimerIcon from '@mui/icons-material/Timer';
 import StarIcon from '@mui/icons-material/Star';
 import { StandardHeader } from '../../components/StandardHeader';
+import { EndMenuNewGame } from '../../components/EndMenuNewGame';
 
 // Generates a large pool of unique questions to ensure no repeats in a 60s session
 const generateQuestionPool = () => {
@@ -166,23 +166,14 @@ export const EinmalEinsTimeAttackSite = () => {
             );
           })}
         </Box>
-
-        <Dialog open={gameEnded} maxWidth="xs" fullWidth PaperProps={{ sx: { borderRadius: 5, textAlign: 'center' } }}>
-          <DialogTitle sx={{ pt: 4 }}>
-            <EmojiEventsIcon sx={{ fontSize: 100, color: '#ffc107' }} />
-            <Typography variant="h3" fontWeight="900">ZEIT ABGELAUFEN!</Typography>
-          </DialogTitle>
-          <DialogContent>
-            <Typography variant="h5" sx={{ mb: 1 }}>Dein Score:</Typography>
-            <Typography variant="h2" fontWeight="900" color="primary">{score}</Typography>
-            <Typography variant="subtitle1" color="text.secondary">Gelöste Aufgaben</Typography>
-          </DialogContent>
-          <DialogActions sx={{ justifyContent: 'center', pb: 4 }}>
-            <Button variant="contained" size="large" onClick={startNewGame} sx={{ px: 6, py: 2, borderRadius: 3, fontWeight: 'bold' }}>
-              Neuer Versuch
-            </Button>
-          </DialogActions>
-        </Dialog>
+        
+        <EndMenuNewGame 
+          gameWon={gameEnded} 
+          winText={"ZEIT ABGELAUFEN!!"}
+          winAnswer={`Dein Score: ${score}`}
+          restart={startNewGame}
+          backLink={`/spiele`}
+        />
       </Container>
     </>
   );

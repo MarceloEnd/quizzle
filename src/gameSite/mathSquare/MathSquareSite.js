@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import { Box, TextField, Paper, Typography, Button, Container, Dialog, useTheme, useMediaQuery } from '@mui/material';
+import { Box, TextField, Paper, Typography, Container, useTheme, useMediaQuery } from '@mui/material';
 import { generatePuzzle } from './functions/functions';
 import { useSearchParams } from 'react-router-dom';
 import { StandardHeader } from '../../components/StandardHeader';
-import EmojiEventsIcon from '@mui/icons-material/EmojiEvents';
+import { EndMenuNewGame } from '../../components/EndMenuNewGame';
 
 export const MathSquareSite = () => {
     const [searchParams] = useSearchParams();
@@ -13,7 +13,6 @@ export const MathSquareSite = () => {
     const [inputs, setInputs] = useState({});
     const [status, setStatus] = useState({});
     const [showSuccess, setShowSuccess] = useState(false);
-
     // Responsive sizing logic
     const theme = useTheme();
     const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
@@ -33,21 +32,40 @@ export const MathSquareSite = () => {
         startNewGame();
     }, [startNewGame]);
 
-    const checkSolution = () => {
-        if (!gameData) return;
+    // --- AUTOMATIC CHECK LOGIC ---
+    useEffect(() => {
+        if (!gameData || Object.keys(inputs).length === 0) return;
+
         const { inputCoords, fullValues } = gameData;
         const newStatus = {};
         let allCorrect = true;
+        let allFilled = true;
+
         inputCoords.forEach((pos) => {
-            if (Number(inputs[pos]) !== fullValues[pos]) {
+            const val = inputs[pos];
+            
+            // Track if any field is empty
+            if (val === '') {
+                allFilled = false;
+                allCorrect = false;
+                return;
+            }
+
+            // Check correctness
+            if (Number(val) !== fullValues[pos]) {
                 newStatus[pos] = 'error';
                 allCorrect = false;
             }
         });
-        if (allCorrect) setShowSuccess(true);
-        else setStatus(newStatus);
-    };
 
+        setStatus(newStatus);
+
+        // Only show success if every field is filled AND correct
+        if (allFilled && allCorrect) {
+            setShowSuccess(true);
+        }
+    }, [inputs, gameData]);
+    
     const renderCell = (val, type, pos) => {
         const commonStyles = {
             width: cellSize, 
@@ -150,25 +168,14 @@ export const MathSquareSite = () => {
                         {renderCell('', 'block')} {renderCell(gameData.c[2], 'result')} {renderCell('', 'block')} {renderCell('', 'block')}
                     </Box>
                 </Paper>
-
-                <Box sx={{ mt: 4, display: 'flex', flexDirection: isMobile ? 'column' : 'row', gap: 2, width: isMobile ? '90%' : 'auto' }}>
-                    <Button variant="contained" size="large" onClick={checkSolution} fullWidth={isMobile}>
-                        Prüfen
-                    </Button>
-                    <Button variant="outlined" size="large" onClick={startNewGame} fullWidth={isMobile}>
-                        Neu
-                    </Button>
-                </Box>
-
-                <Dialog open={showSuccess} onClose={() => setShowSuccess(false)} maxWidth="xs" fullWidth>
-                    <Box sx={{ p: 4, textAlign: 'center' }}>
-                        <EmojiEventsIcon sx={{ fontSize: 80, color: '#ffc107', mb: 1 }} />
-                        <Typography variant="h4" fontWeight="900">GEWINNER!</Typography>
-                        <Button onClick={startNewGame} variant="contained" color="success" sx={{ mt: 3 }}>
-                            Nächstes Level
-                        </Button>
-                    </Box>
-                </Dialog>
+                
+                <EndMenuNewGame 
+                    gameWon={showSuccess} 
+                    winText={""}
+                    winAnswer={`GEWINNER`}
+                    restart={startNewGame}
+                    backLink={`/spiele`}
+                />
             </Container>
         </>
     );
