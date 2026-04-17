@@ -109,22 +109,14 @@ export const GameOverviewSite = () => {
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
 
   return (
-    <Box sx={{ bgcolor: '#F0F4F8', minHeight: '100vh' }}>
+    <Box>
       <StandardHeader previousPath="/"/>
       
       <Container maxWidth="md" sx={{ py: { xs: 2, sm: 4 } }}>
-        <Paper 
-          elevation={isMobile ? 0 : 4} 
-          sx={{ 
-            p: { xs: 1, sm: 4 }, 
-            textAlign: 'center', 
-            bgcolor: isMobile ? 'transparent' : 'white',
-            borderRadius: '24px' 
-          }}
-        >
+      
           <Typography 
             variant={isMobile ? "h4" : "h2"} 
-            color="primary" 
+            color="#4ba5f7" 
             gutterBottom 
             sx={{ fontWeight: 800, mb: 4 }}
           >
@@ -138,7 +130,7 @@ export const GameOverviewSite = () => {
                 elevation={2} 
                 sx={{ 
                   borderRadius: '20px', 
-                  backgroundColor: "#e3fae8ff",
+                  backgroundColor: "#c5efff",
                   overflow: 'hidden'
                 }}
               >
@@ -196,7 +188,6 @@ export const GameOverviewSite = () => {
               </Paper>
             ))}
           </List>
-        </Paper>
       </Container>
     </Box>
   );

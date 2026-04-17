@@ -9,7 +9,7 @@ export const Footer = () => {
     <Box 
       component="footer" 
       sx={{ 
-        background: 'linear-gradient(90deg, #FFFFFF 0%, #F0F4F8 100%)',
+        background: 'linear-gradient(90deg, #4ba5f7 0%, #c5efff 100%)',
         borderTop: '1px solid rgba(0, 0, 0, 0.05)',
         py: 4,
         mt: 'auto', // Important for the "Sticky Footer" effect
@@ -28,7 +28,7 @@ export const Footer = () => {
           <Typography 
             variant="body2" 
             sx={{ 
-              color: '#636E72', 
+              color: '#ffffffff', 
               fontFamily: '"Outfit", sans-serif',
               fontWeight: 500,
               textAlign: { xs: 'center', sm: 'left' }
@@ -59,7 +59,7 @@ export const Footer = () => {
                 fontWeight: 600,
                 fontFamily: '"Outfit", sans-serif',
                 transition: 'all 0.2s',
-                '&:hover': { color: '#00cec9', transform: 'translateY(-1px)' }
+                '&:hover': { color: '#4ba5f7', transform: 'translateY(-1px)' }
               }}
             >
               AGB
@@ -75,7 +75,7 @@ export const Footer = () => {
                 fontWeight: 600,
                 fontFamily: '"Outfit", sans-serif',
                 transition: 'all 0.2s',
-                '&:hover': { color: '#00cec9', transform: 'translateY(-1px)' }
+                '&:hover': { color: '#4ba5f7', transform: 'translateY(-1px)' }
               }}
             >
               Impressum

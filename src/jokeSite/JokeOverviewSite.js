@@ -28,7 +28,7 @@ export const JokeOverviewSite = () => {
     <div className="Jokes Overview">
       <StandardHeader previousPath="/"/>
       <Paper elevation={4} sx={{ p: 6, textAlign: 'center', bgcolor: 'white' }}>
-        <Typography variant={isMobile ? "h4" : "h2"} color="primary" gutterBottom sx={{ fontWeight: 800, mb: 4 }}>
+        <Typography variant={isMobile ? "h4" : "h2"} color="#4ba5f7" gutterBottom sx={{ fontWeight: 800, mb: 4 }}>
           Witze vom feinsten
         </Typography>
 
@@ -40,14 +40,14 @@ export const JokeOverviewSite = () => {
             sx={{ 
               borderRadius: '20px', 
               overflow: 'hidden',
-              backgroundColor: '#FCE4EC',
+              backgroundColor: '#c5efff',
               transition: 'transform 0.2s',
               '&:hover': { transform: 'scale(1.02)' }
             }}
           >
             <ListItem sx={{ p: 3 }}>
               <ListItemIcon>
-                <QuizIcon sx={{ fontSize: 40, color: '#E91E63' }} />
+                <QuizIcon sx={{ fontSize: 40, color: '#412199' }} />
               </ListItemIcon>
               <ListItemText 
                 primary={<Typography variant="h6" sx={{ fontWeight: 'bold' }}>{item}</Typography>}
@@ -58,7 +58,7 @@ export const JokeOverviewSite = () => {
                 to={"/witz/"+index}
                 sx={{ 
                   borderRadius: '12px', 
-                  backgroundColor: '#E91E63',
+                  backgroundColor: '#412199',
                   '&:hover': { backgroundColor: '#FFF3E0', filter: 'brightness(0.9)' }
                 }}
                 endIcon={<ArrowIcon />}

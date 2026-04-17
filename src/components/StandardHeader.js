@@ -6,6 +6,7 @@ import {
 import { Link, useLocation } from 'react-router-dom';
 import MenuIcon from '@mui/icons-material/Menu';
 import logo from '../images/logo.jpeg';
+import oldlogo from '../images/logo_old.jpeg';
 
 export const StandardHeader = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -31,12 +32,12 @@ export const StandardHeader = () => {
     mx: 2,
     color: '#FFFFFF',
     borderRadius: '50px',
-    backgroundColor: isActive(path) ? '#FF9800' : 'transparent',
+    backgroundColor: isActive(path) ? '#f7bd4a' : 'transparent',
     textTransform: 'none',
     fontSize: '1rem',
     transition: 'all 0.3s ease',
     '&:hover': { 
-      backgroundColor: isActive(path) ? '#E68A00' : 'rgba(255, 255, 255, 0.1)',
+      backgroundColor: isActive(path) ? '#f7bd4a' : 'rgba(255, 255, 255, 0.1)',
     }
   });
 
@@ -46,7 +47,7 @@ export const StandardHeader = () => {
         position="sticky" 
         elevation={0} 
         sx={{ 
-          background: '#3798ddff', 
+          background: '#4ba5f7', 
           borderBottom: '1px solid rgba(0, 0, 0, 0.05)',
           py: 0.5
         }}
@@ -75,6 +76,12 @@ export const StandardHeader = () => {
                     component="img"
                     src={logo}
                     alt="Logo"
+                    sx={{ width: 50, height: 50, borderRadius: '12px', mr: 1.5, border: '2px solid #FFF' }}
+                  />
+                  <Box
+                    component="img"
+                    src={oldlogo}
+                    alt="OldLogo"
                     sx={{ width: 50, height: 50, borderRadius: '12px', mr: 1.5, border: '2px solid #FFF' }}
                   />
                   <Typography variant="h5" sx={{ fontWeight: 900, color: '#ffffffff' }}>

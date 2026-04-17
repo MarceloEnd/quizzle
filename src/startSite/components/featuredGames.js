@@ -6,8 +6,8 @@ import {
   Grid, 
   Container, 
   CardActionArea,
-  Card,        // Swapped Paper for Card
-  CardContent  // Added CardContent for proper spacing
+  Card,
+  CardContent 
 } from '@mui/material';
 import SportsEsportsIcon from '@mui/icons-material/SportsEsports';
 import ExtensionIcon from '@mui/icons-material/Extension';
@@ -19,34 +19,34 @@ export const FeaturedGames = () => {
     {
       title: "Wortschlange",
       desc: "Folge der Spur!",
-      icon: <ExtensionIcon sx={{ fontSize: 50, color: '#fff' }} />,
+      icon: <ExtensionIcon sx={{ fontSize: { xs: 35, sm: 50 }, color: '#fff' }} />,
       path: "/spiele/wortschlangeliste",
       gradient: 'linear-gradient(135deg, #4CAF50 0%, #81C784 100%)',
-      shadow: '0 8px 20px rgba(76, 175, 80, 0.35)'
+      shadow: '0 8px 20px rgba(76, 175, 80, 0.3)'
     },
     {
       title: "Mathe-Quadrat",
       desc: "Zahlen-Rätsel",
-      icon: <CalculateIcon sx={{ fontSize: 50, color: '#fff' }} />,
+      icon: <CalculateIcon sx={{ fontSize: { xs: 35, sm: 50 }, color: '#fff' }} />,
       path: "/spiele/rechnequadrat",
       gradient: 'linear-gradient(135deg, #2196F3 0%, #64B5F6 100%)',
-      shadow: '0 8px 20px rgba(33, 150, 243, 0.35)'
+      shadow: '0 8px 20px rgba(33, 150, 243, 0.3)'
     },
     {
       title: "Sudoku",
       desc: "Bist du schlau?",
-      icon: <SportsEsportsIcon sx={{ fontSize: 50, color: '#fff' }} />,
+      icon: <SportsEsportsIcon sx={{ fontSize: { xs: 35, sm: 50 }, color: '#fff' }} />,
       path: "/spiele/sudoku6x6",
       gradient: 'linear-gradient(135deg, #FF9800 0%, #FFB74D 100%)',
-      shadow: '0 8px 20px rgba(255, 152, 0, 0.35)'
+      shadow: '0 8px 20px rgba(255, 152, 0, 0.3)'
     },
     {
       title: "Wortsuche",
       desc: "Finde alle!",
-      icon: <SpellcheckIcon sx={{ fontSize: 50, color: '#fff' }} />,
+      icon: <SpellcheckIcon sx={{ fontSize: { xs: 35, sm: 50 }, color: '#fff' }} />,
       path: "/spiele/wortsucheliste",
       gradient: 'linear-gradient(135deg, #E91E63 0%, #F06292 100%)',
-      shadow: '0 8px 20px rgba(233, 30, 99, 0.35)'
+      shadow: '0 8px 20px rgba(233, 30, 99, 0.3)'
     }
   ];
 
@@ -56,7 +56,7 @@ export const FeaturedGames = () => {
         variant="h5" 
         sx={{ 
           fontWeight: '900', 
-          color: '#3b9ecdff', 
+          color: '#4ba5f7', 
           mb: 3, 
           textAlign: { xs: 'center', md: 'left' },
           textTransform: 'uppercase',
@@ -66,15 +66,19 @@ export const FeaturedGames = () => {
         Featured Games
       </Typography>
 
-      <Grid container spacing={3} alignItems="stretch">
+      <Grid container spacing={2}>
         {featured.map((game, index) => (
           <Grid 
             item 
-            xs={12} 
+            xs={6} 
             sm={6} 
             md={3} 
             key={index} 
-            sx={{ display: 'flex' }}
+            sx={{ 
+              display: 'flex', 
+              justifyContent: 'center', // Centers the card within the 50% grid width
+              alignItems: 'center' 
+            }}
           >
             <Card 
               elevation={0}
@@ -82,74 +86,69 @@ export const FeaturedGames = () => {
                 borderRadius: '24px', 
                 background: game.gradient,
                 boxShadow: game.shadow,
-                transition: 'all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275)',
-                position: 'relative',
-                overflow: 'hidden',
                 
-                // FORCE EQUAL WIDTH & HEIGHT
-                width: '100%', 
+                // --- WIDTH & HEIGHT CONSISTENCY ---
+                width: {xs: '140px', sm: '150px'},
+                maxWidth: {xs: '140px', sm: '150px'}, 
+                height: { xs: '150px', sm: '160px' }, 
+                
                 display: 'flex', 
                 flexDirection: 'column',
-
-                '&:hover': { 
-                  transform: 'scale(1.05) translateY(-5px)',
-                  boxShadow: '0 12px 25px rgba(0,0,0,0.2)'
-                },
-                '&::after': {
-                    content: '""',
-                    position: 'absolute',
-                    top: '-50%', left: '-50%',
-                    width: '200%', height: '200%',
-                    background: 'linear-gradient(to bottom right, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0) 50%)',
-                    transform: 'rotate(30deg)',
-                    pointerEvents: 'none'
-                }
+                overflow: 'hidden',
+                transition: 'transform 0.2s',
+                '&:hover': { transform: 'scale(1.02)' }
               }}
             >
               <CardActionArea 
                 component={Link} 
                 to={game.path} 
                 sx={{ 
-                  flexGrow: 1, 
+                  height: '100%', 
                   display: 'flex', 
-                  flexDirection: 'column', 
-                  alignItems: 'stretch' // Ensures inner content fills width
+                  flexDirection: 'column',
+                  alignItems: 'center',
+                  justifyContent: 'center'
                 }}
               >
                 <CardContent sx={{ 
-                    p: 3, 
                     textAlign: 'center', 
-                    display: 'flex', 
-                    flexDirection: 'column', 
-                    gap: 1.5,
-                    minHeight: '150px',
-                    minWidth: '140px',
-                    justifyContent: 'center'
+                    p: 1.5,
+                    width: '100%',
+                    boxSizing: 'border-box'
                 }}>
-                  <Box sx={{ 
-                    display: 'flex', 
-                    justifyContent: 'center', 
-                    alignItems: 'center',
-                    filter: 'drop-shadow(0px 4px 4px rgba(0,0,0,0.1))'
-                  }}>
+                  <Box sx={{ mb: 1, display: 'flex', justifyContent: 'center' }}>
                     {game.icon}
                   </Box>
-                  <Box>
-                    <Typography 
-                      variant="h6" 
-                      sx={{ 
-                          fontWeight: '900', 
-                          color: '#fff', 
-                          lineHeight: 1.1, 
-                          textShadow: '0px 2px 4px rgba(0,0,0,0.2)'
-                      }}
-                    >
-                      {game.title}
-                    </Typography>
-                    <Typography variant="body2" sx={{ color: 'rgba(255,255,255,0.9)', fontWeight: '600', mt: 0.5 }}>
-                      {game.desc}
-                    </Typography>
-                  </Box>
+                  
+                  <Typography 
+                    sx={{ 
+                        fontWeight: '900', 
+                        color: '#fff', 
+                        lineHeight: 1.1,
+                        fontSize: { xs: '0.85rem', sm: '1rem' },
+                        display: '-webkit-box',
+                        WebkitLineClamp: 2,
+                        WebkitBoxOrient: 'vertical',
+                        overflow: 'hidden'
+                    }}
+                  >
+                    {game.title}
+                  </Typography>
+
+                  <Typography 
+                    variant="body2" 
+                    sx={{ 
+                      color: 'rgba(255,255,255,0.9)', 
+                      fontWeight: '600', 
+                      mt: 0.5,
+                      fontSize: { xs: '0.65rem', sm: '0.8rem' },
+                      whiteSpace: 'nowrap',
+                      overflow: 'hidden',
+                      textOverflow: 'ellipsis'
+                    }}
+                  >
+                    {game.desc}
+                  </Typography>
                 </CardContent>
               </CardActionArea>
             </Card>

@@ -1,48 +1,27 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Typography, Box, Container, Fade, IconButton} from '@mui/material';
+import { Box, Container, Fade, IconButton } from '@mui/material';
 
 import { 
   ArrowForwardIos as ArrowIcon,
   ArrowBackIosNew as ArrowBackIcon, // Added back arrow
-  Star as StarIcon,
-  EmojiEvents as TrophyIcon,
-  AutoAwesome as MagicIcon,
-  Lightbulb as IdeaIcon
 } from '@mui/icons-material';
+
+import crossword from '../../images/banners/Crossword.png';
+import wizard from '../../images/banners/Wizards.png';
 
 export const Banner = () => {
     const [currentBanner, setCurrentBanner] = useState(0);
     
       const banners = [
         {
-          title: "HALLO ENTDECKER!",
-          text: "Bereit für ein Abenteuer? Klick hier!",
-          icon: <StarIcon sx={{ fontSize: 40, color: '#FFD700' }} />,
-          color: 'linear-gradient(45deg, #2196F3 30%, #21CBF3 90%)',
-          path: "/spiele"
+          path: "/spiele",
+          image: wizard // Full-sized background wizard
         },
         {
-          title: "QUIZ-MEISTER?",
-          text: "Zeig was du kannst im neuen Quiz!",
-          icon: <TrophyIcon sx={{ fontSize: 40, color: '#FFFFFF' }} />,
-          color: 'linear-gradient(45deg, #FF9800 30%, #FFB74D 90%)',
-          path: "/quizliste"
+          path: "/quizliste",
+          image: crossword // Full-sized background crossword
         },
-        {
-          title: "LACHMAL WIEDER!",
-          text: "Die besten Witze warten auf dich.",
-          icon: <MagicIcon sx={{ fontSize: 40, color: '#E1BEE7' }} />,
-          color: 'linear-gradient(45deg, #E91E63 30%, #F06292 90%)',
-          path: "/witzliste"
-        },
-        {
-          title: "WORT-PROFI?",
-          text: "Knacke die Wortschlange!",
-          icon: <IdeaIcon sx={{ fontSize: 40, color: '#C8E6C9' }} />,
-          color: 'linear-gradient(45deg, #2E7D32 30%, #4CAF50 90%)',
-          path: "/spiele/wortschlangeliste"
-        }
       ];
     
       // Manual change functions
@@ -66,7 +45,7 @@ export const Banner = () => {
     const activeBanner = banners[currentBanner];
     
     return(
-        <Container maxWidth="md" sx={{ mt: 3 }}>
+        <Container maxWidth="md" sx={{ mt: 3, px: { xs: 1, md: 3 } }}>
         {/* Relative Box to hold Link and absolute Arrows */}
         <Box sx={{ position: 'relative', display: 'flex', alignItems: 'center' }}>
           
@@ -75,8 +54,9 @@ export const Banner = () => {
             onClick={prevBanner}
             sx={{ 
                 position: 'absolute', left: 10, zIndex: 10, 
-                color: 'white', bgcolor: 'rgba(255,255,255,0.2)',
-                '&:hover': { bgcolor: 'rgba(255,255,255,0.4)' }
+                color: 'white', 
+                bgcolor: 'rgba(0,0,0,0.3)', // Darkened for visibility on any image
+                '&:hover': { bgcolor: 'rgba(0,0,0,0.5)' }
             }}
           >
             <ArrowBackIcon />
@@ -86,36 +66,51 @@ export const Banner = () => {
             <Fade in={true} key={currentBanner} timeout={800}>
               <Box 
                 sx={{ 
-                  background: activeBanner.color,
                   borderRadius: '24px',
-                  p: { xs: 4, md: 6 }, // Increased padding for arrows
-                  color: 'white',
-                  textAlign: 'center',
-                  boxShadow: '0 8px 20px rgba(0,0,0,0.15)',
+                  boxShadow: '0 8px 24px rgba(0,0,0,0.25)',
+                  cursor: 'pointer',
+                  overflow: 'hidden', // Required for rounded corners on background images
+                  transition: 'transform 0.3s ease',
+                  '&:hover': { transform: 'scale(1.01)' },
+
+                  // --- FULL-SIZED IMAGE BACKGROUND ---
+                  backgroundImage: `url(${activeBanner.image})`,
+                  backgroundSize: 'cover', // Fills the area completely
+                  backgroundPosition: 'center', // Centers the relevant part of the image
+                  backgroundRepeat: 'no-repeat',
+                  
+                  // This Box now purely defines the height of the banner
+                  height: { xs: '180px', sm: '220px', md: '260px' }, 
+                  
+                  // Maintain internal layout for pagination dots
                   display: 'flex',
                   flexDirection: 'column',
+                  justifyContent: 'flex-end', // Puts dots at the bottom
                   alignItems: 'center',
-                  gap: 1,
-                  cursor: 'pointer',
-                  transition: 'transform 0.3s ease',
-                  '&:hover': { transform: 'scale(1.01)' }
+                  p: 2, 
+                  position: 'relative',
+                  
+                  // Optional: adds a subtle gradient at the very bottom to make dots visible
+                  '&::after': {
+                    content: '""',
+                    position: 'absolute',
+                    bottom: 0, left: 0, width: '100%', height: '40px',
+                    background: 'linear-gradient(to top, rgba(0,0,0,0.4), transparent)',
+                    zIndex: 1
+                  }
                 }}
               >
-                {activeBanner.icon}
-                <Typography variant="h4" sx={{ fontWeight: '900', letterSpacing: 1 }}>
-                  {activeBanner.title}
-                </Typography>
-                <Typography variant="body1" sx={{ opacity: 0.9, fontSize: '1.1rem' }}>
-                  {activeBanner.text}
-                </Typography>
-                
-                <Box sx={{ display: 'flex', gap: 1, mt: 2 }}>
+                {/* Pagination Dots */}
+                <Box sx={{ display: 'flex', gap: 1, zIndex: 2 }}>
                   {banners.map((_, i) => (
                     <Box 
                       key={i}
                       sx={{ 
-                        width: 8, height: 8, borderRadius: '50%', 
-                        bgcolor: 'white', opacity: i === currentBanner ? 1 : 0.3 
+                        width: 9, height: 9, borderRadius: '50%', 
+                        bgcolor: 'white', 
+                        // Increased opacity for visibility on images
+                        opacity: i === currentBanner ? 1 : 0.45,
+                        boxShadow: '0 1px 3px rgba(0,0,0,0.3)'
                       }} 
                     />
                   ))}
@@ -129,8 +124,9 @@ export const Banner = () => {
             onClick={nextBanner}
             sx={{ 
                 position: 'absolute', right: 10, zIndex: 10, 
-                color: 'white', bgcolor: 'rgba(255,255,255,0.2)',
-                '&:hover': { bgcolor: 'rgba(255,255,255,0.4)' }
+                color: 'white', 
+                bgcolor: 'rgba(0,0,0,0.3)',
+                '&:hover': { bgcolor: 'rgba(0,0,0,0.5)' }
             }}
           >
             <ArrowIcon />
